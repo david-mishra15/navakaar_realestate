@@ -12,7 +12,7 @@ import Save from "../assets/savelarg.jpeg";
 
 const SellProperty = () => {
   return (
-    <div className="font-sans text-gray-800">
+    <div className="font-sans text-ink">
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white">
         <img
@@ -34,7 +34,7 @@ const SellProperty = () => {
 
       {/* Intro */}
       <section className="max-w-6xl mx-auto px-6 py-12 text-center">
-        <p className="text-gray-700 text-base md:text-lg">
+        <p className="text-ink/80 text-base md:text-lg">
           NAVKAAR is an award-winning real estate brokerage agency offering a
           wide variety of residential properties — apartments, penthouses,
           townhouses, villas, and mansions, among many others.
@@ -43,26 +43,26 @@ const SellProperty = () => {
 
       {/* Our Features */}
       <section className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-center mb-12">
-        <div className="bg-white shadow-md p-6 rounded-lg hover:shadow-xl transition">
-          <FaUsers className="text-orange-600 text-3xl mx-auto mb-4" />
+        <div className="bg-white shadow-md p-6 rounded-sm hover:shadow-md transition">
+          <FaUsers className="text-ink text-3xl mx-auto mb-4" />
           <h3 className="font-semibold text-lg mb-2">Our Network</h3>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted">
             With 50+ agents, NAVKAAR has a unique global network, ensuring fast
             property sales by connecting you to potential buyers.
           </p>
         </div>
-        <div className="bg-white shadow-md p-6 rounded-lg hover:shadow-xl transition">
-          <FaHandshake className="text-orange-600 text-3xl mx-auto mb-4" />
+        <div className="bg-white shadow-md p-6 rounded-sm hover:shadow-md transition">
+          <FaHandshake className="text-ink text-3xl mx-auto mb-4" />
           <h3 className="font-semibold text-lg mb-2">Our Services</h3>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted">
             Comprehensive selling assistance with valuation, consultation, and
             documentation to ensure a smooth transaction.
           </p>
         </div>
-        <div className="bg-white shadow-md p-6 rounded-lg hover:shadow-xl transition">
-          <FaLightbulb className="text-orange-600 text-3xl mx-auto mb-4" />
+        <div className="bg-white shadow-md p-6 rounded-sm hover:shadow-md transition">
+          <FaLightbulb className="text-ink text-3xl mx-auto mb-4" />
           <h3 className="font-semibold text-lg mb-2">Our Expertise</h3>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted">
             Our agents bring years of experience in handling property sales,
             negotiations, and closing deals with confidence.
           </p>
@@ -70,12 +70,12 @@ const SellProperty = () => {
       </section>
 
       {/* Marketing Way */}
-      <section className="bg-gray-50 py-12">
+      <section className="bg-stone py-12">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-medium text-center mb-8">
             The NAVKAAR Way of Marketing a Property
           </h2>
-          <ul className="grid md:grid-cols-2 gap-6 text-gray-700 text-sm md:text-base">
+          <ul className="grid md:grid-cols-2 gap-6 text-ink/80 text-sm md:text-base">
             <li>
               ✅ In-depth discussions with expert advisors for accurate property
               pricing.
@@ -93,7 +93,7 @@ const SellProperty = () => {
             </li>
           </ul>
           <div className="text-center mt-8">
-            <button className="px-6 py-2 bg-orange-600 text-white rounded-lg shadow hover:bg-orange-700 transition">
+            <button className="px-6 py-2 bg-ink text-white rounded-sm shadow hover:bg-graphite transition">
               Explore All Areas
             </button>
           </div>
@@ -103,7 +103,7 @@ const SellProperty = () => {
       {/* User Guide */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+          <h2 className="font-display text-2xl md:text-3xl font-medium text-center mb-10">
             A User’s Guide to Selling Real Estate
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -135,10 +135,10 @@ const SellProperty = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white p-6 shadow-md rounded-lg hover:shadow-lg transition"
+                className="bg-white p-6 shadow-md rounded-sm hover:shadow-md transition"
               >
                 <h3 className="font-semibold text-lg mb-3">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.text}</p>
+                <p className="text-sm text-muted">{item.text}</p>
               </div>
             ))}
           </div>
@@ -174,7 +174,7 @@ const SellProperty = () => {
             <p className="text-sm">Email: info@navkaar.com</p>
             <p className="text-sm">Phone: +971 54 581 6583</p>
             {/* Social Icons */}
-            <div className="flex gap-4 mt-4 text-orange-500">
+            <div className="flex gap-4 mt-4 text-ink">
               <a href="#">
                 <FaFacebookF />
               </a>
@@ -190,7 +190,7 @@ const SellProperty = () => {
             </div>
           </div>
         </div>
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 text-sm text-muted">
           © {new Date().getFullYear()} NAVKAAR – A Real Estate Co.
         </div>
       </footer>

@@ -28,13 +28,13 @@ const ApartmentSell = () => {
   }, [currentPage]);
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
       {/* Apartment Cards Section */}
       <div className="max-w-6xl mx-auto px-4 py-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         {apartments.map((apt) => (
           <div
             key={apt.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition"
+            className="bg-white shadow-md rounded-sm overflow-hidden hover:shadow-md transition"
           >
             <img
               src={`${API_URL}${apt.thumbnail}`}
@@ -42,15 +42,15 @@ const ApartmentSell = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800">
+              <h2 className="text-lg font-semibold text-ink">
                 {apt.title}
               </h2>
-              <p className="text-gray-600 text-sm">📍 {apt.location}</p>
-              <p className="text-blue-700 font-medium mt-1">{apt.price}</p>
+              <p className="text-muted text-sm">📍 {apt.location}</p>
+              <p className="text-ink font-medium mt-1">{apt.price}</p>
 
               <Link
                 to={`/apartment-for-sale/${apt.id}`}
-                className="mt-3 block text-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg"
+                className="mt-3 block text-center bg-ink hover:bg-graphite text-white text-sm font-medium py-2 px-4 rounded-sm"
               >
                 View Details
               </Link>
@@ -59,7 +59,7 @@ const ApartmentSell = () => {
         ))}
 
         {apartments.length === 0 && (
-          <p className="col-span-3 text-center text-gray-500">
+          <p className="col-span-3 text-center text-muted">
             No apartments available.
           </p>
         )}
@@ -72,8 +72,8 @@ const ApartmentSell = () => {
           disabled={currentPage === 1}
           className={`px-4 py-2 rounded-md text-sm font-medium ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-blue-600 text-white hover:bg-blue-700"
+              ? "bg-gray-300 text-muted cursor-not-allowed"
+              : "bg-ink text-white hover:bg-graphite"
           }`}
         >
           Prev
@@ -85,7 +85,7 @@ const ApartmentSell = () => {
             onClick={() => setCurrentPage(index + 1)}
             className={`px-3 py-2 rounded-md text-sm font-medium ${
               currentPage === index + 1
-                ? "bg-blue-600 text-white"
+                ? "bg-ink text-white"
                 : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
@@ -100,8 +100,8 @@ const ApartmentSell = () => {
           disabled={currentPage === totalPages}
           className={`px-4 py-2 rounded-md text-sm font-medium ${
             currentPage === totalPages
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-blue-600 text-white hover:bg-blue-700"
+              ? "bg-gray-300 text-muted cursor-not-allowed"
+              : "bg-ink text-white hover:bg-graphite"
           }`}
         >
           Next

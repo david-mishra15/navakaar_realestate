@@ -39,7 +39,7 @@ const VillaDetails = () => {
   if (!villa) {
     return (
       <div className="w-full h-screen flex items-center justify-center px-4">
-        <p className="text-gray-600 text-lg text-center">
+        <p className="text-muted text-lg text-center">
           Villa details not found.
         </p>
       </div>
@@ -51,7 +51,7 @@ const VillaDetails = () => {
     : `${API_URL}${villa.thumbnail}`;
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
       {/* Hero Section */}
       <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]">
         <img
@@ -59,8 +59,8 @@ const VillaDetails = () => {
           alt={villa.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-blue-900/50 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg">
+        <div className="absolute inset-0 bg-ink/50 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="font-display text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium">
             {villa.title}
           </h1>
           <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mt-2">
@@ -73,7 +73,7 @@ const VillaDetails = () => {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <Link
           to="/villa"
-          className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+          className="inline-block bg-ink text-white px-5 py-2 rounded-sm shadow hover:bg-graphite transition"
         >
           ← Back to all villas
         </Link>
@@ -95,17 +95,17 @@ const VillaDetails = () => {
                   <img
                     src={`${API_URL}${d.image}`}
                     alt={d.heading}
-                    className="w-full h-full object-cover rounded-2xl shadow-lg"
+                    className="w-full h-full object-cover rounded-md shadow-sm"
                   />
                 </div>
               )}
 
               {/* Text */}
               <div className="md:w-1/2 w-full flex flex-col justify-center p-6">
-                <h3 className="text-3xl font-bold mb-4 text-gray-800">
+                <h3 className="font-display text-3xl font-medium mb-4 text-ink">
                   {d.heading}
                 </h3>
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-muted text-lg leading-relaxed">
                   {d.description}
                 </p>
               </div>

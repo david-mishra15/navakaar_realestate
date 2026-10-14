@@ -42,7 +42,7 @@ export default function LuxuryDetails() {
   }, [id]);
 
   if (loading) {
-    return <p className="text-center py-16 text-gray-600">Loading...</p>;
+    return <p className="text-center py-16 text-muted">Loading...</p>;
   }
 
   if (!property) {
@@ -68,7 +68,7 @@ export default function LuxuryDetails() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+          <h1 className="font-display text-4xl md:text-6xl font-medium mb-4">
             {property.title}
           </h1>
           <p className="text-lg md:text-2xl max-w-3xl leading-relaxed opacity-90">
@@ -79,7 +79,7 @@ export default function LuxuryDetails() {
 
       {/* Gallery Section */}
       <div className="max-w-7xl mx-auto py-16 px-6 space-y-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-10">
+        <h2 className="font-display text-3xl md:text-4xl font-medium text-center text-ink mb-10">
           Property Gallery
         </h2>
 
@@ -92,7 +92,7 @@ export default function LuxuryDetails() {
               }`}
             >
               {/* Image */}
-              <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow-lg">
+              <div className="w-full md:w-1/2 overflow-hidden rounded-sm">
                 <img
                   src={`${BASE_URL}${item.image}`}
                   alt={item.title}
@@ -102,17 +102,17 @@ export default function LuxuryDetails() {
 
               {/* Text */}
               <div className="w-full md:w-1/2 space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-800">
+                <h3 className="font-display text-2xl font-medium text-ink">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-muted text-lg leading-relaxed">
                   {item.description}
                 </p>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500">
+          <p className="text-center text-muted">
             No gallery images available.
           </p>
         )}

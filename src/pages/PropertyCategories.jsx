@@ -53,118 +53,118 @@ export default function PropertyCategories() {
 
   // Loading & Error
   if (loading)
-    return <p className="text-center mt-10">Loading categories...</p>;
+    return <p className="container-site py-16 text-muted">Loading categories...</p>;
   if (error)
-    return <p className="text-center mt-10 text-red-500">{error}</p>;
+    return <p className="container-site py-16 text-red-700">{error}</p>;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
-      {/* Header */}
-      <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-        <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold mb-3">
-          Explore By Category
-        </p>
-        <h2 className="text-3xl md:text-4xl font-display font-semibold text-brand-ink mb-4">
-          Find Your Dream Home with NAVKAAR
-        </h2>
-        <div className="w-14 h-px bg-brand-gold mb-5"></div>
-        <p className="text-gray-600 text-sm md:text-base max-w-2xl">
-          Explore exclusive real estate opportunities in prime locations with
-          NAVKAAR.
-        </p>
-      </div>
-
-      {/* Category Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-12">
-        {currentData.length === 0 && (
-          <p className="col-span-full text-center text-gray-500">
-            No categories available.
+    <section className="bg-white section">
+      <div className="container-site">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-end mb-12 md:mb-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-5">Explore By Category</p>
+            <h2 className="display-lg text-ink">
+              Find Your Dream Home with <span className="italic">NAVKAAR</span>
+            </h2>
+          </div>
+          <p className="lg:col-span-5 lg:justify-self-end lead max-w-md">
+            Explore exclusive real estate opportunities in prime locations with
+            NAVKAAR.
           </p>
-        )}
-
-        {currentData.map((cat, index) => (
-          <motion.div
-            key={cat.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: (index % 6) * 0.08 }}
-          >
-            <Link
-              to={`/DreamDetails/${cat.id}`}
-              className="relative block rounded-md overflow-hidden group ring-1 ring-brand-ink/[0.06] hover:ring-brand-ink/0 hover:shadow-xl transition-all duration-500"
-            >
-              <div className="aspect-[4/5] sm:aspect-square overflow-hidden">
-                <img
-                  src={`${BASE_URL}/uploads/${cat.image}`}
-                  alt={cat.title}
-                  loading="lazy"
-                  decoding="async"
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/90 via-brand-charcoal/10 to-transparent flex flex-col justify-end p-4 text-white">
-                <h3 className="font-display text-base sm:text-lg font-semibold transition-colors duration-300">
-                  {cat.title}
-                </h3>
-                <p className="hidden sm:block text-xs text-gray-200/90 mt-1 transition-colors duration-300 line-clamp-2">
-                  {cat.description}
-                </p>
-                <span className="mt-2.5 inline-flex w-fit items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-brand-goldSoft group-hover:text-white transition-all duration-300">
-                  View
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </span>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center space-x-2">
-          <button
-            onClick={goToPrevPage}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-sm border transition-all duration-300 ${
-              currentPage === 1
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-white text-brand-ink border-brand-ink/20 hover:border-brand-maroon hover:text-brand-maroon"
-            }`}
-          >
-            Prev
-          </button>
-
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => setCurrentPage(index + 1)}
-              className={`px-4 py-2 rounded-sm border transition-all duration-300 ${
-                currentPage === index + 1
-                  ? "bg-brand-maroon text-white border-brand-maroon"
-                  : "bg-white text-brand-ink border-brand-ink/20 hover:border-brand-maroon hover:text-brand-maroon"
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
-
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-sm border transition-all duration-300 ${
-              currentPage === totalPages
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-white text-brand-ink border-brand-ink/20 hover:border-brand-maroon hover:text-brand-maroon"
-            }`}
-          >
-            Next
-          </button>
         </div>
-      )}
+
+        {/* Category Cards — the first tile leads at double size on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12">
+          {currentData.length === 0 && (
+            <p className="col-span-full border-t border-line pt-8 text-muted">
+              No categories available.
+            </p>
+          )}
+
+          {currentData.map((cat, index) => {
+            const feature = index === 0 && currentData.length >= 3;
+            return (
+              <motion.div
+                key={cat.id}
+                className={feature ? "sm:col-span-2 lg:row-span-2" : ""}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: (index % 6) * 0.08 }}
+              >
+                <Link
+                  to={`/DreamDetails/${cat.id}`}
+                  className="relative block h-full rounded-sm overflow-hidden group bg-coal"
+                >
+                  <div
+                    className={`h-full overflow-hidden ${
+                      feature ? "aspect-[4/5] sm:aspect-[16/10] lg:aspect-auto" : "aspect-[4/5] sm:aspect-square"
+                    }`}
+                  >
+                    <img
+                      src={`${BASE_URL}/uploads/${cat.image}`}
+                      alt={cat.title}
+                      loading="lazy"
+                      decoding="async"
+                      sizes={feature ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
+                      className="img-mono w-full h-full object-cover transition-[transform,filter] duration-[1200ms] ease-editorial group-hover:scale-[1.03] group-hover:[filter:none]"
+                    />
+                  </div>
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/15 to-transparent flex flex-col justify-end p-5 sm:p-6 text-white">
+                    <h3 className={`font-display font-medium leading-tight ${feature ? "text-3xl sm:text-4xl" : "text-2xl"}`}>
+                      {cat.title}
+                    </h3>
+                    {cat.description && (
+                      <p className={`text-sm text-white/75 mt-2 line-clamp-2 max-w-md ${feature ? "" : "hidden sm:block"}`}>
+                        {cat.description}
+                      </p>
+                    )}
+                    <span className="mt-4 inline-flex w-fit items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-white/80 group-hover:text-white transition-colors duration-300">
+                      View
+                      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex flex-wrap justify-center items-center gap-2">
+            <button
+              onClick={goToPrevPage}
+              disabled={currentPage === 1}
+              className="chip disabled:opacity-40 disabled:hover:border-line disabled:hover:text-muted disabled:cursor-not-allowed"
+            >
+              Prev
+            </button>
+
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => setCurrentPage(index + 1)}
+                aria-current={currentPage === index + 1 ? "page" : undefined}
+                className={`chip !px-4 tabular-nums ${currentPage === index + 1 ? "chip-active" : ""}`}
+              >
+                {index + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={goToNextPage}
+              disabled={currentPage === totalPages}
+              className="chip disabled:opacity-40 disabled:hover:border-line disabled:hover:text-muted disabled:cursor-not-allowed"
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

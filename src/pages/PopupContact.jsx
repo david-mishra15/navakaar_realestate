@@ -39,78 +39,93 @@ export default function ContactPopupOnScroll() {
       {/* Floating trigger — the only way this popup opens now */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 sm:bottom-6 left-4 sm:left-6 z-40 flex items-center gap-2 bg-brand-maroon hover:bg-brand-maroonDeep text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+        className="fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-40 flex items-center gap-2.5 bg-ink hover:bg-graphite text-white pl-4 pr-5 py-3 rounded-full ring-1 ring-white/20 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] transition-colors duration-300"
       >
-        <MessageSquareText size={18} />
-        <span className="text-sm font-semibold">Enquire Now</span>
+        <MessageSquareText size={16} strokeWidth={1.5} />
+        <span className="text-[13px] font-medium tracking-[0.04em]">Enquire Now</span>
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-brand-charcoalDeep/70 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 w-[90%] max-w-2xl relative animate-fadeIn border border-brand-gold/30">
+        <div
+          className="fixed inset-0 bg-night/75 backdrop-blur-[2px] flex items-center justify-center z-50 p-4"
+          onClick={(e) => e.target === e.currentTarget && setIsOpen(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="enquiry-title"
+            className="bg-paper rounded-sm w-full max-w-xl max-h-[calc(100svh-2rem)] overflow-y-auto relative animate-fadeInUp border border-line"
+          >
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-brand-maroon transition"
+              aria-label="Close"
+              className="absolute top-4 right-4 p-1 text-muted hover:text-ink transition-colors"
             >
-              <X size={24} />
+              <X size={22} strokeWidth={1.5} />
             </button>
 
-            {/* Title */}
-            <h2 className="font-display text-3xl font-semibold mb-2 text-center text-brand-maroon">
-              Let’s Get In Touch
-            </h2>
-            <p className="text-center text-brand-gold mb-6">
-              We’d love to hear from you — send us a quick message!
-            </p>
+            <div className="p-7 sm:p-10">
+              {/* Title */}
+              <p className="eyebrow mb-4">Enquire Now</p>
+              <h2 id="enquiry-title" className="display-md text-ink">
+                Let’s Get In Touch
+              </h2>
+              <p className="mt-3 mb-8 text-sm text-muted">
+                We’d love to hear from you — send us a quick message!
+              </p>
 
-            {/* Form */}
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full border border-brand-gold/50 rounded-lg px-4 py-3 text-gray-800 focus:ring-2 focus:ring-brand-maroon/40 outline-none"
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Your Phone *"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full border border-brand-gold/50 rounded-lg px-4 py-3 text-gray-800 focus:ring-2 focus:ring-brand-maroon/40 outline-none"
-                required
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full border border-brand-gold/50 rounded-lg px-4 py-3 text-gray-800 focus:ring-2 focus:ring-brand-maroon/40 outline-none"
-              />
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="5"
-                className="w-full border border-brand-gold/50 rounded-lg px-4 py-3 text-gray-800 focus:ring-2 focus:ring-brand-maroon/40 outline-none"
-              ></textarea>
+              {/* Form */}
+              <form className="space-y-3" onSubmit={handleSubmit}>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    aria-label="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="field"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Your Phone *"
+                    aria-label="Your Phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="field"
+                    required
+                  />
+                </div>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  aria-label="Subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="field"
+                />
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  aria-label="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="4"
+                  className="field resize-none"
+                ></textarea>
 
-              <button
-                type="submit"
-                className="w-full bg-brand-maroon text-white py-3 rounded-lg font-semibold tracking-wide hover:bg-brand-maroonDeep transition transform hover:scale-[1.02]"
-              >
-                Send Message
-              </button>
-            </form>
+                <button type="submit" className="btn-primary w-full !mt-5">
+                  Send Message
+                </button>
+              </form>
+            </div>
 
             {/* Only Phone Info */}
-            <div className="mt-8 text-gray-700 text-sm text-center">
-              <p className="flex items-center justify-center gap-2 text-brand-maroon">
-                <Phone size={16} /> +91-9996663035
+            <div className="border-t border-line px-7 sm:px-10 py-5 text-sm">
+              <p className="flex items-center gap-2.5 text-ink tabular-nums">
+                <Phone size={15} strokeWidth={1.5} className="text-muted" /> +91-9996663035
               </p>
             </div>
           </div>

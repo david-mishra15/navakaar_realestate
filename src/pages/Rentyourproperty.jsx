@@ -188,46 +188,46 @@ export default function RentyourPropertyCards() {
     <>
       {/* Contact Info */}
       <div>
-        <label className="block font-semibold mb-1">Contact Name</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Contact Name</label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
           required
         />
       </div>
       <div>
-        <label className="block font-semibold mb-1">Contact No.</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Contact No.</label>
         <input
           type="text"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
           required
         />
       </div>
       <div>
-        <label className="block font-semibold mb-1">Email (optional)</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Email (optional)</label>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         />
       </div>
 
       {/* Sector */}
       {/* <div>
-        <label className="block font-semibold mb-1"> Sector</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2"> Sector</label>
         <select
           name="sector"
           value={formData.sector}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         >
           <option value="">Select Sector</option>
           {preferredSectors.map((s) => (
@@ -243,7 +243,7 @@ export default function RentyourPropertyCards() {
             name="customSector"
             value={formData.customSector}
             onChange={handleChange}
-            className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+            className="field mt-2"
             placeholder="Enter your preferred sector"
           />
         )}
@@ -251,12 +251,12 @@ export default function RentyourPropertyCards() {
 
       {/* Facing */}
       <div className="mt-0">
-        <label className="block font-semibold mb-1">Facing</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Facing</label>
         <select
           name="facing"
           value={formData.facing}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         >
           <option value="">Select Facing</option>
           {facingOptions.map((f) => (
@@ -272,7 +272,7 @@ export default function RentyourPropertyCards() {
             name="customFacing"
             value={formData.customFacing}
             onChange={handleChange}
-            className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+            className="field mt-2"
             placeholder="Enter facing direction"
           />
         )}
@@ -280,24 +280,24 @@ export default function RentyourPropertyCards() {
 
       {/* Approx Rent */}
       <div className="mt-0">
-        <label className="block font-semibold mb-1">Approx Rent (₹)</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Approx Rent (₹)</label>
         <input
           type="number"
           name="approxRent"
           value={formData.approxRent}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
           placeholder="Enter approximate rent"
         />
       </div>
       {/* Authority */}
       <div>
-        <label className="block font-semibold mb-1">Govt. Authority</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Govt. Authority</label>
         <select
           name="authority"
           value={formData.authority}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         >
           <option value="">Select Authority</option>
           {authorityOptions.map((a) => (
@@ -313,7 +313,7 @@ export default function RentyourPropertyCards() {
             name="customAuthority"
             value={formData.customAuthority}
             onChange={handleChange}
-            className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+            className="field mt-2"
             placeholder="Enter custom authority"
           />
         )}
@@ -321,12 +321,12 @@ export default function RentyourPropertyCards() {
 
       {/* Facilities */}
       <div>
-        <label className="block font-semibold mb-1">Facilities provided</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Facilities provided</label>
         <select
           name="facilities"
           value={formData.facilities}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         >
           <option value="">Select Facility</option>
           {facilityOptions.map((f) => (
@@ -342,7 +342,7 @@ export default function RentyourPropertyCards() {
             name="customFacilities"
             value={formData.customFacilities}
             onChange={handleChange}
-            className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+            className="field mt-2"
             placeholder="Enter your custom facility"
           />
         )}
@@ -350,37 +350,37 @@ export default function RentyourPropertyCards() {
 
       {/* Any Other Choice */}
       <div className="sm:col-span-2">
-        <label className="block font-semibold mb-1">Any Other Choice</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Any Other Choice</label>
         <textarea
           name="anything_else"
           value={formData.anything_else}
           onChange={handleChange}
           rows="3"
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         />
       </div>
 
       {/* Images */}
       <div className="sm:col-span-2">
-        <label className="block font-semibold mb-1">Attach Photos</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Attach Photos</label>
         <input
           type="file"
           name="images"
           multiple
           accept="image/*"
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         />
       </div>
 
 
       <div>
-        <label className="block font-semibold mb-1"> Sector</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2"> Sector</label>
         <select
           name="sector"
           value={formData.sector}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         >
           <option value="">Select Sector</option>
           {preferredSectors.map((s) => (
@@ -396,7 +396,7 @@ export default function RentyourPropertyCards() {
             name="customSector"
             value={formData.customSector}
             onChange={handleChange}
-            className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+            className="field mt-2"
             placeholder="Enter your preferred sector"
           />
         )}
@@ -405,31 +405,31 @@ export default function RentyourPropertyCards() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto mt-12 flex flex-col lg:flex-row gap-6 pt-20 px-4">
+    <div className="container-site pt-24 sm:pt-32 pb-16 sm:pb-24 flex flex-col lg:flex-row gap-6 lg:gap-12">
       {/* Sidebar Tabs */}
-      <div className="bg-white p-3 rounded-xl shadow-lg h-fit w-full lg:w-1/4 sticky top-24">
-        <div className="hidden lg:flex flex-col space-y-2">
+      <div className="sticky top-16 lg:top-28 z-20 -mx-5 px-5 sm:mx-0 sm:px-0 py-3 lg:py-0 bg-paper/95 backdrop-blur lg:bg-transparent lg:backdrop-blur-none h-fit w-auto lg:w-60 shrink-0">
+        <div className="hidden lg:flex flex-col border-t border-ink">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`w-full text-left px-4 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === t.id
-                ? "bg-[#CA8B06] text-white shadow-md"
-                : "bg-gray-100 text-gray-700 hover:bg-[#9A0000]"
+              className={`w-full text-left py-4 border-b border-line text-[15px] transition-colors duration-300 ${activeTab === t.id
+                ? "text-ink font-medium pl-3 border-l-2 border-l-ink"
+                : "text-muted hover:text-ink"
                 }`}
             >
               {t.label}
             </button>
           ))}
         </div>
-        <div className="flex lg:hidden overflow-x-auto space-x-2 pb-2 scrollbar-hide">
+        <div className="flex lg:hidden overflow-x-auto gap-2 scrollbar-hide">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ${activeTab === t.id
-                ? "bg-[#CA8B06] text-white shadow-md"
-                : "bg-gray-100 text-gray-700 hover:bg-[#9A0000]"
+              className={`chip flex-shrink-0 whitespace-nowrap ${activeTab === t.id
+                ? "chip-active"
+                : ""
                 }`}
             >
               {t.label}
@@ -439,7 +439,7 @@ export default function RentyourPropertyCards() {
       </div>
 
       {/* ===== FORM ===== */}
-      <div className="flex-1 bg-white rounded-2xl shadow-lg p-6 sm:p-8 border">
+      <div className="flex-1 min-w-0 bg-white rounded-sm border border-line p-6 sm:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -448,13 +448,13 @@ export default function RentyourPropertyCards() {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.4 }}
           >
-            <h2 className="text-2xl font-bold mb-6 text-blue-700 capitalize text-center sm:text-left">
+            <h2 className="display-md text-ink capitalize mb-8 sm:mb-10">
               {tabs.find((t) => t.id === activeTab)?.label} — Rent your property
             </h2>
 
             <form
               onSubmit={handleSubmit}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5"
             >
               {/* Common fields for all tabs */}
               {renderCommonFields()}
@@ -463,12 +463,12 @@ export default function RentyourPropertyCards() {
               {activeTab === "villa" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Bedroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bedroom</label>
                     <select
                       name="bedroom"
                       value={formData.bedroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bedroom</option>
                       {villaBedroomOptions.map((b) => (
@@ -480,12 +480,12 @@ export default function RentyourPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bathroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bathroom</label>
                     <select
                       name="bathroom"
                       value={formData.bathroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bathroom</option>
                       {villaBathroomOptions.map((b) => (
@@ -497,12 +497,12 @@ export default function RentyourPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Furnish Status</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Furnish Status</label>
                     <select
                       name="furnish"
                       value={formData.furnish}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Furnish Status</option>
                       {furnishOptions.map((f) => (
@@ -514,14 +514,14 @@ export default function RentyourPropertyCards() {
                   </div>
                   {/* Block No. */}
                   <div>
-                    <label className="block font-semibold mb-1">
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                       Block No.
                     </label>
                     <select
                       name="blockNo"
                       value={formData.blockNo}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Block No.</option>
                       {blockNumbers.map((b) => (
@@ -537,7 +537,7 @@ export default function RentyourPropertyCards() {
                         name="customBlockNo"
                         value={formData.customBlockNo}
                         onChange={handleChange}
-                        className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+                        className="field mt-2"
                         placeholder="Enter your block number"
                       />
                     )}
@@ -545,12 +545,12 @@ export default function RentyourPropertyCards() {
 
                   {/* Plot No. */}
                   <div className="mt-4">
-                    <label className="block font-semibold mb-1">Plot No.</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot No.</label>
                     <select
                       name="plotNo"
                       value={formData.plotNo}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Plot No.</option>
                       {plotNumbers.map((p) => (
@@ -566,7 +566,7 @@ export default function RentyourPropertyCards() {
                         name="customPlotNo"
                         value={formData.customPlotNo}
                         onChange={handleChange}
-                        className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+                        className="field mt-2"
                         placeholder="Enter your plot number"
                       />
                     )}
@@ -574,12 +574,12 @@ export default function RentyourPropertyCards() {
 
                   {/* Plot Size */}
                   <div>
-                    <label className="block font-semibold mb-1">Plot Size (m²)</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot Size (m²)</label>
                     <select
                       name="plot_size"
                       value={formData.plot_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Plot Size</option>
                       {villaPlotSizes.map((p) => (
@@ -595,7 +595,7 @@ export default function RentyourPropertyCards() {
                         name="customPlotSize"
                         value={formData.customPlotSize}
                         onChange={handleChange}
-                        className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+                        className="field mt-2"
                         placeholder="Enter custom plot size"
                       />
                     )}
@@ -607,12 +607,12 @@ export default function RentyourPropertyCards() {
               {activeTab === "flats" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Flat Size (sq. ft.)</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Flat Size (sq. ft.)</label>
                     <select
                       name="flat_size"
                       value={formData.flat_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Flat Size</option>
                       {flatSizes.map((f) => (
@@ -628,19 +628,19 @@ export default function RentyourPropertyCards() {
                         name="customFlatSize"
                         value={formData.customFlatSize}
                         onChange={handleChange}
-                        className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+                        className="field mt-2"
                         placeholder="Enter custom flat size"
                       />
                     )}
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bedroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bedroom</label>
                     <select
                       name="bedroom"
                       value={formData.bedroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bedroom</option>
                       {flatBedroomOptions.map((b) => (
@@ -652,12 +652,12 @@ export default function RentyourPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bathroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bathroom</label>
                     <select
                       name="bathroom"
                       value={formData.bathroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bathroom</option>
                       {flatBathroomOptions.map((b) => (
@@ -669,12 +669,12 @@ export default function RentyourPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Furnish Status</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Furnish Status</label>
                     <select
                       name="furnish"
                       value={formData.furnish}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Furnish Status</option>
                       {furnishOptions.map((f) => (
@@ -686,7 +686,7 @@ export default function RentyourPropertyCards() {
                   </div>
                   {/* Tower No. */}
                   <div className="mt-4">
-                    <label className="block font-semibold mb-1">
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                       Tower No.
                     </label>
                     <input
@@ -694,40 +694,40 @@ export default function RentyourPropertyCards() {
                       name="towerNo"
                       value={formData.towerNo}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter tower number"
                     />
                   </div>
 
                   {/* Flat No. */}
                   <div className="mt-4">
-                    <label className="block font-semibold mb-1">Flat No.</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Flat No.</label>
                     <input
                       type="text"
                       name="flatNo"
                       value={formData.flatNo}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter flat number"
                     />
                   </div>
 
                   {/* Floor */}
                   <div className="mt-4">
-                    <label className="block font-semibold mb-1">Floor</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Floor</label>
                     <input
                       type="text"
                       name="floor"
                       value={formData.floor}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter floor"
                     />
                   </div>
 
                   {/* Builder Project Name */}
                   <div className="mt-4">
-                    <label className="block font-semibold mb-1">
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                       Builder Project Name
                     </label>
                     <input
@@ -735,7 +735,7 @@ export default function RentyourPropertyCards() {
                       name="builderProjectName"
                       value={formData.builderProjectName}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter builder project name"
                     />
                   </div>
@@ -746,48 +746,48 @@ export default function RentyourPropertyCards() {
               {activeTab === "shop" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Plot Size (Mtr.)</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot Size (Mtr.)</label>
                     <input
                       type="text"
                       name="plot_size"
                       value={formData.plot_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter plot size"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Floor</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Floor</label>
                     <input
                       type="text"
                       name="floor"
                       value={formData.floor}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter floor"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block font-semibold mb-1">Address</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Address</label>
                     <input
                       type="text"
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter address"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Type of Property</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Type of Property</label>
                     <select
                       name="typeOfProperty"
                       value={formData.typeOfProperty}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Type</option>
                       {shopTypes.map((t) => (
@@ -799,13 +799,13 @@ export default function RentyourPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Builder Project Name</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Builder Project Name</label>
                     <input
                       type="text"
                       name="builderProjectName"
                       value={formData.builderProjectName}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter builder project name"
                     />
                   </div>
@@ -816,13 +816,13 @@ export default function RentyourPropertyCards() {
               {activeTab === "factory" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Plot Size (Mtr.)</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot Size (Mtr.)</label>
                     <input
                       type="text"
                       name="plot_size"
                       value={formData.plot_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter plot size"
                     />
                   </div>
@@ -833,13 +833,13 @@ export default function RentyourPropertyCards() {
               {activeTab === "warehouse" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Plot Size (Mtr.)</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot Size (Mtr.)</label>
                     <input
                       type="text"
                       name="plot_size"
                       value={formData.plot_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter plot size"
                     />
                   </div>
@@ -850,7 +850,7 @@ export default function RentyourPropertyCards() {
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="bg-[#CA8B06] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#9A0000] transition-all duration-300 w-full"
+                  className="btn-primary w-full mt-2"
                 >
                   Submit {tabs.find((t) => t.id === activeTab)?.label} Rent Form
                 </button>

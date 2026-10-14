@@ -66,10 +66,10 @@ export default function BuyPropertyCards() {
   ];
 
   const tabClass = (tab) =>
-    `flex flex-col items-center justify-center gap-1 p-2 rounded-lg cursor-pointer transition-all duration-300 border ${
+    `flex flex-col lg:flex-row items-center lg:justify-start gap-1.5 lg:gap-3 px-2 py-3 lg:px-0 lg:py-3.5 rounded-sm lg:rounded-none lg:border-0 lg:border-b border lg:border-line transition-colors duration-300 ${
       activeTab === tab
-        ? "bg-[#9A0000] text-white shadow-md scale-105"
-        : "bg-white text-black hover:bg-[#9A0000]/60 hover:text-white shadow-md"
+        ? "bg-ink text-white border-ink lg:bg-transparent lg:text-ink lg:font-medium"
+        : "bg-white border-line text-muted hover:text-ink hover:border-ink lg:bg-transparent lg:hover:border-line"
     }`;
 
   useEffect(() => {
@@ -159,9 +159,9 @@ export default function BuyPropertyCards() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto mt-12 flex flex-col lg:flex-row gap-6 pt-20 px-4">
-      <div className="w-full lg:w-60 flex flex-col bg-gray-50 p-5 rounded-2xl shadow-lg lg:sticky lg:top-24 h-fit">
-        <div className="grid grid-cols-4 gap-2 lg:grid-cols-1 mb-6">
+    <div className="container-site pt-24 sm:pt-32 pb-16 sm:pb-24 flex flex-col lg:flex-row gap-8 lg:gap-12">
+      <div className="w-full lg:w-64 shrink-0 flex flex-col lg:sticky lg:top-28 h-fit">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 lg:gap-0 lg:grid-cols-1 lg:border-t lg:border-ink mb-8">
           {tabs.map((t) => (
             <button
               key={t.id}
@@ -169,7 +169,7 @@ export default function BuyPropertyCards() {
               className={tabClass(t.id)}
             >
               {t.icon}
-              <span className="text-xs font-medium">{t.label}</span>
+              <span className="text-xs lg:text-[15px]">{t.label}</span>
             </button>
           ))}
         </div>
@@ -177,7 +177,7 @@ export default function BuyPropertyCards() {
         <select
           value={authorityFilter}
           onChange={(e) => setAuthorityFilter(e.target.value)}
-          className="mb-3 p-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#CA8B06]"
+          className="field mb-3"
         >
           <option value="">Filter by Authority</option>
           {authorityOptions.map((auth) => (
@@ -188,7 +188,7 @@ export default function BuyPropertyCards() {
         <select
           value={sectorFilter}
           onChange={(e) => setSectorFilter(e.target.value)}
-          className="mb-3 p-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#CA8B06]"
+          className="field mb-3"
         >
           <option value="">Filter by Sector</option>
           {sectorOptions.map((sector) => (
@@ -199,7 +199,7 @@ export default function BuyPropertyCards() {
         <select
           value={sizeFilter}
           onChange={(e) => setSizeFilter(e.target.value)}
-          className="mb-3 p-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#CA8B06]"
+          className="field mb-3"
         >
           <option value="">Filter by Property Size</option>
           {sizeOptions.map((size) => (
@@ -210,7 +210,7 @@ export default function BuyPropertyCards() {
         <select
           value={budgetFilter}
           onChange={(e) => setBudgetFilter(e.target.value)}
-          className="mb-3 p-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#CA8B06]"
+          className="field mb-3"
         >
           <option value="">Filter by Budget</option>
           {budgetOptions.map((b) => (
@@ -225,19 +225,19 @@ export default function BuyPropertyCards() {
             setSizeFilter("");
             setBudgetFilter("");
           }}
-          className="text-sm text-[#9A0000] hover:underline"
+          className="link-line self-start mt-3 text-ink"
         >
           Clear All Filters
         </button>
       </div>
 
-      <div className="flex-1 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="flex-1 min-w-0 grid gap-x-6 gap-y-10 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 content-start">
         {loading ? (
-          <div className="col-span-full text-center py-16 text-gray-500 text-xl">
+          <div className="col-span-full border-t border-line pt-10 text-muted text-lg">
             Loading Properties...
           </div>
         ) : filteredData.length === 0 ? (
-          <div className="col-span-full text-center py-16 text-gray-500 text-xl">
+          <div className="col-span-full border-t border-line pt-10 text-muted text-lg">
             No properties found matching your filters.
           </div>
         ) : (
@@ -249,7 +249,7 @@ export default function BuyPropertyCards() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                className="group/card flex flex-col bg-white rounded-sm overflow-hidden border border-line hover:border-ink transition-colors duration-300"
               >
                 <div className="relative group overflow-hidden">
                   <img
@@ -263,22 +263,22 @@ export default function BuyPropertyCards() {
                         : `${API_URL}/uploads/${item.image}`
                     }
                     alt={item.sector || "Property"}
-                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full aspect-[4/3] object-cover group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-editorial"
                   />
-                  <div className="absolute top-3 right-3 bg-[#CA8B06] text-white px-3 py-1 rounded-full text-xs font-bold">
+                  <div className="absolute top-4 left-4 bg-paper text-ink px-3 py-1.5 rounded-full text-[10px] font-medium uppercase tracking-[0.14em]">
                     {item.govt_authority || item.authority || item.builder_name || "Authority"}
                   </div>
                 </div>
 
-                <div className="p-5 space-y-3">
-                  <h3 className="font-bold text-lg text-[#2A2513]">
+                <div className="p-6 space-y-2 flex-1">
+                  <h3 className="font-display font-medium text-2xl leading-tight text-ink">
                     {item.sector} {getPlotNo(item) ? `• ${getPlotNo(item)}` : ""}
                   </h3>
-                  <p className="text-gray-600">
-                    Size: <span className="font-semibold">{getPlotSize(item) || "N/A"}</span>
+                  <p className="text-sm text-muted">
+                    Size: <span className="text-ink">{getPlotSize(item) || "N/A"}</span>
                   </p>
                   {item.price && (
-                    <p className="text-2xl font-bold text-[#CA8B06]">₹ {item.price}</p>
+                    <p className="pt-3 text-lg font-medium text-ink tabular-nums">₹ {item.price}</p>
                   )}
                 </div>
 
@@ -296,9 +296,10 @@ export default function BuyPropertyCards() {
                         : `/property-details/${item.id}`
                     )
                   }
-                  className="w-full bg-[#CA8B06] hover:bg-[#9A0000] text-white font-bold py-4 text-center transition-all duration-300"
+                  className="w-full flex items-center justify-between border-t border-line px-6 py-4 text-[12px] font-medium uppercase tracking-[0.16em] text-ink group-hover/card:bg-ink group-hover/card:text-white transition-colors duration-300"
                 >
                   Contact Agent
+                  <span aria-hidden="true">→</span>
                 </button>
               </motion.div>
             ))}

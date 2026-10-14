@@ -50,7 +50,7 @@ const RentApartmentDetails = () => {
   if (!apartment) {
     return (
       <div className="w-full h-screen flex items-center justify-center px-4">
-        <p className="text-gray-600 text-lg text-center">
+        <p className="text-muted text-lg text-center">
           Apartment details not found.
         </p>
       </div>
@@ -64,7 +64,7 @@ const RentApartmentDetails = () => {
     : apartment.thumbnail;
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
       {/* Banner Section */}
       <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px]">
         <img
@@ -72,8 +72,8 @@ const RentApartmentDetails = () => {
           alt={apartment.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-blue-900/50 flex flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg">
+        <div className="absolute inset-0 bg-ink/50 flex flex-col items-center justify-center px-4 text-center">
+          <h1 className="font-display text-white text-2xl sm:text-3xl md:text-5xl font-medium">
             {bannerApartment?.title}
           </h1>
           <p className="text-white text-sm sm:text-base md:text-lg mt-2">
@@ -86,7 +86,7 @@ const RentApartmentDetails = () => {
       <div className="max-w-6xl mx-auto px-4 py-6">
         <Link
           to="/rent-apartment"
-          className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+          className="inline-block bg-ink text-white px-5 py-2 rounded-sm shadow hover:bg-graphite transition"
         >
           ← Back to all apartments
         </Link>
@@ -95,7 +95,7 @@ const RentApartmentDetails = () => {
       {/* Apartment Details Section */}
       {details.length > 0 && (
         <div className="max-w-6xl mx-auto px-4 py-12">
-          <h3 className="text-2xl font-bold mb-10 text-center md:text-left text-gray-800">
+          <h3 className="font-display text-2xl font-medium mb-10 text-center md:text-left text-ink">
             Apartment Features / Details
           </h3>
 
@@ -103,7 +103,7 @@ const RentApartmentDetails = () => {
             {details.map((d) => (
               <div
                 key={d.id}
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6 flex flex-col md:flex-row gap-8"
+                className="bg-white rounded-md shadow-md hover:shadow-md transition p-6 flex flex-col md:flex-row gap-8"
               >
                 {/* Left Image */}
                 {d.image && (
@@ -115,7 +115,7 @@ const RentApartmentDetails = () => {
                           : `${API_URL}/uploads/${d.image}`
                       }
                       alt={d.heading}
-                      className="w-full h-72 md:h-80 object-cover rounded-2xl shadow-lg"
+                      className="w-full h-72 md:h-80 object-cover rounded-md shadow-sm"
                     />
                   </div>
                 )}
@@ -123,10 +123,10 @@ const RentApartmentDetails = () => {
                 {/* Right Text */}
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
-                    <h4 className="text-2xl font-semibold text-gray-900 mb-4">
+                    <h4 className="font-display text-2xl font-medium text-ink mb-4">
                       {d.heading}
                     </h4>
-                    <p className="text-gray-600 leading-relaxed text-lg">
+                    <p className="text-muted leading-relaxed text-lg">
                       {d.description}
                     </p>
                   </div>

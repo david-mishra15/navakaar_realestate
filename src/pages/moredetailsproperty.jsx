@@ -64,7 +64,7 @@ export default function MoreDetailsProperty() {
   if (!property)
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-500 text-lg animate-pulse">
+        <p className="text-muted text-lg animate-pulse">
           Loading property details...
         </p>
       </div>
@@ -86,11 +86,11 @@ export default function MoreDetailsProperty() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="space-y-6"
         >
-          <h1 className="text-5xl font-bold leading-snug text-gray-900">
+          <h1 className="display-lg text-ink">
             Helping you to find <br />
-            <span className="text-[#9A0000]">buy Properties</span>
+            <span className="text-ink">buy Properties</span>
           </h1>
-          <p className="text-gray-500 text-lg leading-relaxed">
+          <p className="lead max-w-lg">
             The most trusted marketplace to find, design, and build your dream
             house with comfort and elegance.
           </p>
@@ -99,14 +99,12 @@ export default function MoreDetailsProperty() {
           <div className="flex gap-4">
             <Link to="/contact-us">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative overflow-hidden bg-[#CA8B06] text-white px-6 py-3 rounded-xl font-medium shadow-md hover:shadow-lg transition-all duration-500 group"
+                className="btn-primary relative overflow-hidden group"
               >
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
                   Get Started
                 </span>
-                <span className="absolute inset-0 bg-[#9A0000] transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-xl"></span>
+                <span className="absolute inset-0 bg-graphite transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-md"></span>
               </motion.button>
             </Link>
           </div>
@@ -119,7 +117,7 @@ export default function MoreDetailsProperty() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="relative"
         >
-          <div className="bg-[#9A0000] rounded-3xl shadow-2xl overflow-hidden relative">
+          <div className="bg-stone rounded-sm overflow-hidden relative">
             <img
               src={
                 property.image?.startsWith("http")
@@ -127,10 +125,10 @@ export default function MoreDetailsProperty() {
                   : `${API_URL}/uploads/${property.image}`
               }
               alt={property.sector}
-              className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+              className="w-full h-[400px] object-cover transition-transform duration-700"
             />
-            <div className="absolute bottom-6 left-6 bg-white/90 text-[#9A0000] px-5 py-3 rounded-xl shadow-lg backdrop-blur-sm">
-              <h3 className="text-lg font-semibold">Latest Property</h3>
+            <div className="absolute bottom-0 left-0 bg-paper text-ink px-6 py-4">
+              <h3 className="font-display text-xl font-medium">Latest Property</h3>
               <p className="text-sm opacity-80">
                 {property.sector} - {property.block_no}
               </p>
@@ -148,48 +146,46 @@ export default function MoreDetailsProperty() {
       >
         {/* Property Overview */}
         <motion.div
-          whileHover={{ y: -5 }}
-          transition={{ type: "spring", stiffness: 150 }}
-          className="bg-white/90 backdrop-blur-lg p-10 rounded-3xl shadow-lg border border-gray-100"
+          className="bg-white p-8 sm:p-10 rounded-sm border border-line"
         >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-            <FaHome className="text-[#9A0000]" /> Property Overview
+          <h2 className="display-md text-ink mb-8 flex items-center gap-3">
+            <FaHome className="text-ink" /> Property Overview
           </h2>
 
-          <div className="grid grid-cols-2 gap-y-4 text-gray-700 text-sm leading-relaxed">
+          <div className="grid grid-cols-2 gap-y-4 text-ink/80 text-sm leading-relaxed">
             {property.price && (
-              <p className="col-span-2 text-2xl font-bold text-[#CA8B06] flex items-center gap-2">
+              <p className="col-span-2 font-display text-4xl font-medium text-ink lining-nums flex items-center gap-2 pb-4 mb-2 border-b border-line">
                 <FaRupeeSign /> {property.price}
               </p>
             )}
 
             {property.sector && (
               <p>
-                <span className="font-medium">Sector:</span> {property.sector}
+                <span className="text-muted">Sector:</span> {property.sector}
               </p>
             )}
             {property.plot_size && (
               <p>
-                <span className="font-medium">Plot Size:</span>{" "}
+                <span className="text-muted">Plot Size:</span>{" "}
                 {property.plot_size}
               </p>
             )}
 
             {property.facing && (
               <p>
-                <span className="font-medium">Facing:</span> {property.facing}
+                <span className="text-muted">Facing:</span> {property.facing}
               </p>
             )}
             {property.govt_authority && (
               <p>
-                <span className="font-medium">Govt Authority:</span>{" "}
+                <span className="text-muted">Govt Authority:</span>{" "}
                 {property.govt_authority}
               </p>
             )}
             {property.other_facilities && (
               <p className="col-span-2 flex items-center gap-2">
-                <span className="font-medium">Facilities:</span>
-                <span className="px-3 py-1 bg-orange-500 text-white rounded-lg text-xl font-semibold">
+                <span className="text-muted">Facilities:</span>
+                <span className="px-3 py-1 border border-ink text-ink rounded-full text-sm">
                   {property.other_facilities}
                 </span>
               </p>
@@ -197,19 +193,19 @@ export default function MoreDetailsProperty() {
             )}
             {property.facilities && (
               <p className="col-span-2">
-                <span className="font-medium">Facilitie:</span>{" "}
+                <span className="text-muted">Facilitie:</span>{" "}
                 {property.facilities}
               </p>
             )}
             {property.anything_else && (
               <p className="col-span-2">
-                <span className="font-medium">Anything Else:</span>{" "}
+                <span className="text-muted">Anything Else:</span>{" "}
                 {property.anything_else}
               </p>
             )}
             {property.description && (
-              <p className="col-span-2 text-gray-600">
-                <span className="font-medium">Description:</span>{" "}
+              <p className="col-span-2 text-muted">
+                <span className="text-muted">Description:</span>{" "}
                 {property.description}
               </p>
             )}
@@ -218,11 +214,9 @@ export default function MoreDetailsProperty() {
 
         {/* Contact Agent */}
         <motion.div
-          whileHover={{ y: -5 }}
-          transition={{ type: "spring", stiffness: 150 }}
-          className="bg-gradient-to-br from-yellow-50 to-rose-50 p-10 rounded-3xl shadow-lg border border-[#CA8B06]/30"
+          className="bg-stone p-8 sm:p-10 rounded-sm border border-line"
         >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+          <h2 className="display-md text-ink mb-8">
             Contact Agent
           </h2>
 
@@ -237,7 +231,7 @@ export default function MoreDetailsProperty() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="relative">
-                <FaHome className="absolute left-3 top-3.5 text-gray-400" />
+                <FaHome className="absolute left-3 top-3.5 text-subtle" />
                 <input
                   type="text"
                   name="name"
@@ -245,12 +239,12 @@ export default function MoreDetailsProperty() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                  className="field pl-10"
                 />
               </div>
 
               <div className="relative">
-                <FaEnvelope className="absolute left-3 top-3.5 text-gray-400" />
+                <FaEnvelope className="absolute left-3 top-3.5 text-subtle" />
                 <input
                   type="subject"
                   name="subject"
@@ -258,12 +252,12 @@ export default function MoreDetailsProperty() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                  className="field pl-10"
                 />
               </div>
 
               <div className="relative">
-                <FaPhoneAlt className="absolute left-3 top-3.5 text-gray-400" />
+                <FaPhoneAlt className="absolute left-3 top-3.5 text-subtle" />
                 <input
                   type="text"
                   name="phone"
@@ -271,7 +265,7 @@ export default function MoreDetailsProperty() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                  className="field pl-10"
                 />
               </div>
 
@@ -281,20 +275,18 @@ export default function MoreDetailsProperty() {
                 value={formData.message}
                 onChange={handleChange}
                 rows="3"
-                className="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                className="field"
               />
 
               {/* ✅ Gold → Red hover button */}
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="relative w-full overflow-hidden rounded-xl border bg-[#CA8B06] py-3 font-medium text-white shadow-md hover:shadow-lg transition-all duration-500 group"
+                className="btn-primary relative w-full overflow-hidden group"
               >
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
                   Submit Enquiry
                 </span>
-                <span className="absolute inset-0 bg-[#9A0000] transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-xl"></span>
+                <span className="absolute inset-0 bg-graphite transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-md"></span>
               </motion.button>
             </form>
           )}
@@ -303,12 +295,12 @@ export default function MoreDetailsProperty() {
 
       {/* === PROPERTY GALLERY === */}
       <div className="mt-20 flex flex-col items-center justify-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-14 border-b-4 border-[#CA8B06] pb-3">
+        <h2 className="display-lg text-ink mb-14">
           Property Gallery
         </h2>
 
         {gallery.length === 0 ? (
-          <p className="text-gray-500 text-sm text-center">No images available.</p>
+          <p className="text-muted text-sm text-center">No images available.</p>
         ) : (
           <div className="flex flex-col gap-24 w-full max-w-6xl px-4">
             {gallery.map((item, index) => (
@@ -322,21 +314,21 @@ export default function MoreDetailsProperty() {
                   }`}
               >
                 {/* Image */}
-                <div className="w-full md:w-1/2 overflow-hidden rounded-3xl shadow-xl">
+                <div className="w-full md:w-1/2 overflow-hidden rounded-sm">
                   <img
                     src={`${API_URL}/uploads/${item.image}`}
                     alt={item.title}
-                    className="w-full h-[380px] object-cover transition-transform duration-700 hover:scale-105"
+                    className="w-full h-[380px] object-cover transition-transform duration-700"
                   />
                 </div>
 
                 {/* Text */}
                 <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
-                  <h3 className="text-2xl font-semibold text-gray-900">
+                  <h3 className="font-display text-3xl font-medium leading-tight text-ink">
                     {item.title}
                   </h3>
                   {item.description && (
-                    <p className="text-gray-600 leading-relaxed tracking-wide">
+                    <p className="text-muted leading-relaxed">
                       {item.description}
                     </p>
                   )}

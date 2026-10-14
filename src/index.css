@@ -60,6 +60,158 @@
   src: url('/fonts/cormorant-garamond-500-italic.woff2') format('woff2');
 }
 
+/* ==========================================================================
+   Monochrome design tokens
+   Values are "R G B" triplets consumed by tailwind.config.js (token()).
+   ========================================================================== */
+:root {
+  --ink: 17 17 17;          /* #111111  primary text / primary buttons   */
+  --graphite: 46 46 46;     /* #2E2E2E  hover for dark fills              */
+  --muted: 88 88 88;        /* #585858  secondary text (7:1 on paper)     */
+  --subtle: 128 128 128;    /* #808080  meta / icons only                 */
+  --line: 224 221 216;      /* #E0DDD8  hairlines & borders               */
+  --paper: 250 249 247;     /* #FAF9F7  primary background                */
+  --stone: 240 238 234;     /* #F0EEEA  secondary background              */
+  --night: 10 10 10;        /* #0A0A0A  deep black sections               */
+  --coal: 24 24 24;         /* #181818  charcoal panels                   */
+  --mist: 168 168 168;      /* #A8A8A8  secondary text on dark (8:1)      */
+
+  --header-h: 80px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+    font-feature-settings: "kern", "liga";
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-ink text-white;
+  }
+
+  /* Visible, consistent keyboard focus everywhere. Dark sections flip the
+     ring to white via [data-theme="dark"]. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--ink));
+    outline-offset: 3px;
+  }
+  [data-theme="dark"] :focus-visible {
+    outline-color: #fff;
+  }
+
+  /* Native form controls pick up the monochrome accent */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: rgb(var(--ink));
+  }
+}
+
+@layer components {
+  /* ---- Layout ---------------------------------------------------------- */
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .section {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  /* ---- Typography ------------------------------------------------------ */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-sans text-[11px] font-medium uppercase tracking-eyebrow text-muted;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-8 bg-current opacity-60;
+  }
+  [data-theme="dark"] .eyebrow {
+    @apply text-mist;
+  }
+
+  .display-xl {
+    @apply font-display font-medium leading-[0.98] tracking-[-0.015em];
+    font-size: clamp(2.75rem, 7vw, 6.25rem);
+  }
+  .display-lg {
+    @apply font-display font-medium leading-[1.04] tracking-[-0.01em];
+    font-size: clamp(2.25rem, 4.6vw, 4rem);
+  }
+  .display-md {
+    @apply font-display font-medium leading-[1.1];
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+  }
+
+  .lead {
+    @apply text-base leading-relaxed text-muted sm:text-lg;
+  }
+  [data-theme="dark"] .lead {
+    @apply text-mist;
+  }
+
+  /* ---- Buttons --------------------------------------------------------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-sm border px-7 py-3.5 text-[13px] font-medium tracking-[0.06em] transition-colors duration-300 ease-editorial disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn border-ink bg-ink text-white hover:border-graphite hover:bg-graphite;
+  }
+  .btn-secondary {
+    @apply btn border-ink bg-transparent text-ink hover:bg-ink hover:text-white;
+  }
+  /* For use on dark / image backgrounds */
+  .btn-light {
+    @apply btn border-white bg-white text-ink hover:border-white/80 hover:bg-white/85;
+  }
+  .btn-outline-light {
+    @apply btn border-white/50 bg-transparent text-white hover:border-white hover:bg-white hover:text-ink;
+  }
+
+  /* Text link with a drawn underline */
+  .link-line {
+    @apply relative inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.04em];
+  }
+  .link-line::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-100 bg-current transition-transform duration-500 ease-editorial;
+  }
+  .link-line:hover::after {
+    @apply origin-right scale-x-0;
+  }
+
+  /* ---- Filter chips ---------------------------------------------------- */
+  .chip {
+    @apply rounded-full border border-line bg-transparent px-5 py-2 text-[13px] font-medium text-muted transition-colors duration-300 hover:border-ink hover:text-ink;
+  }
+  .chip-active {
+    @apply border-ink bg-ink text-white hover:text-white;
+  }
+
+  /* ---- Form fields ----------------------------------------------------- */
+  .field {
+    @apply w-full rounded-sm border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-subtle transition-colors duration-200 focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink;
+  }
+
+  /* ---- Imagery --------------------------------------------------------- */
+  /* Ambient / editorial imagery only — never product photos */
+  .img-mono {
+    filter: grayscale(1) contrast(1.06);
+  }
+}
+
 @layer utilities {
   /* Scroll-reveal, used by the framer-motion-free sections */
   @keyframes fadeInUp {
@@ -171,5 +323,20 @@
       opacity: 1 !important;
       transform: none !important;
     }
+  }
+}
+
+/* Respect reduced-motion preferences site-wide: no smooth scrolling, no
+   hover lifts/zooms, near-instant transitions. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

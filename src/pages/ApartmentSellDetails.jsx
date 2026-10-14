@@ -42,7 +42,7 @@ const ApartmentSellDetails = () => {
   if (loading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <p className="text-gray-600 text-lg">Loading apartment details...</p>
+        <p className="text-muted text-lg">Loading apartment details...</p>
       </div>
     );
   }
@@ -62,7 +62,7 @@ const ApartmentSellDetails = () => {
     : `${API_URL}${apartment.thumbnail}`;
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
       {/* Hero Section */}
       <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
         <img
@@ -71,7 +71,7 @@ const ApartmentSellDetails = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">
+          <h1 className="font-display text-white text-3xl md:text-5xl font-medium">
             {apartment.title}
           </h1>
           <p className="text-white text-lg md:text-2xl mt-2">
@@ -87,7 +87,7 @@ const ApartmentSellDetails = () => {
       <div className="max-w-6xl mx-auto px-4 py-6">
         <Link
           to="/apartmentSell"
-          className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+          className="inline-block bg-ink text-white px-5 py-2 rounded-sm shadow hover:bg-graphite transition"
         >
           ← Back to all apartments
         </Link>
@@ -112,16 +112,16 @@ const ApartmentSellDetails = () => {
                         : `${API_URL}${item.image}`
                     }
                     alt={item.title}
-                    className="w-full h-full object-cover rounded-lg shadow-lg"
+                    className="w-full h-full object-cover rounded-sm shadow-sm"
                   />
                 </div>
               )}
               {/* Left: Text */}
               <div className="flex flex-col justify-center">
-                <h3 className="text-3xl font-bold mb-4 text-gray-800">
+                <h3 className="font-display text-3xl font-medium mb-4 text-ink">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-lg">{item.description}</p>
+                <p className="text-muted text-lg">{item.description}</p>
               </div>
 
               {/* Right: Image */}

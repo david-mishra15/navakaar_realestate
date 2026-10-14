@@ -60,15 +60,15 @@ export default function MoreDetailsCommercial() {
 
   if (!property)
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-50">
-        <p className="text-gray-500 text-lg animate-pulse">
+      <div className="flex justify-center items-center h-screen bg-stone">
+        <p className="text-muted text-lg animate-pulse">
           Loading property details...
         </p>
       </div>
     );
 
   return (
-    <div className="max-w-7xl mx-auto px-5 pt-24 space-y-20 bg-gray-50 pb-24">
+    <div className="max-w-7xl mx-auto px-5 pt-24 space-y-20 bg-stone pb-24">
       {/* === HERO SECTION === */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -83,13 +83,13 @@ export default function MoreDetailsCommercial() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="space-y-6"
         >
-          <h1 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 leading-snug text-center lg:text-left">
+          <h1 className="font-display text-3xl lg:text-4xl font-medium mb-6 text-ink leading-snug text-center lg:text-left">
             Helping you to find <br />
-            <span className="bg-gradient-to-r from-[#CA8B06] to-[#9A0000] bg-clip-text text-transparent">
+            <span className="text-ink">
               Commercial Properties
             </span>
           </h1>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-muted text-lg leading-relaxed">
             Explore verified spaces for your business or investment with trust and transparency.
           </p>
 
@@ -98,12 +98,12 @@ export default function MoreDetailsCommercial() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="relative overflow-hidden px-6 py-3 rounded-xl font-medium text-white border bg-[#CA8B06] shadow-md hover:shadow-lg transition-all duration-500 group"
+                className="relative overflow-hidden px-6 py-3 rounded-md font-medium text-white border bg-ink shadow-md hover:shadow-md transition-all duration-500 group"
               >
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
                   Get Started
                 </span>
-                <span className="absolute inset-0 bg-[#9A0000] transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-xl"></span>
+                <span className="absolute inset-0 bg-graphite transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-md"></span>
               </motion.button>
             </Link>
           </div>
@@ -116,7 +116,7 @@ export default function MoreDetailsCommercial() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="relative"
         >
-          <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+          <div className="rounded-md overflow-hidden shadow-sm border border-line bg-white">
             <img
               src={
                 property.image?.startsWith("http")
@@ -124,10 +124,10 @@ export default function MoreDetailsCommercial() {
                   : `${API_URL}/uploads/${property.image}`
               }
               alt="Commercial Property"
-              className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+              className="w-full h-[400px] object-cover transition-transform duration-700"
             />
-            <div className="absolute bottom-6 left-6 bg-white/90 text-gray-900 px-5 py-3 rounded-xl shadow-lg backdrop-blur-sm">
-              <h3 className="text-lg font-semibold">Latest Property</h3>
+            <div className="absolute bottom-6 left-6 bg-white/90 text-ink px-5 py-3 rounded-md shadow-sm backdrop-blur-sm">
+              <h3 className="font-display text-xl font-medium">Latest Property</h3>
               <p className="text-sm opacity-80">
                 {property.sector} - {property.block_no}
               </p>
@@ -145,51 +145,49 @@ export default function MoreDetailsCommercial() {
       >
         {/* Overview */}
         <motion.div
-          whileHover={{ y: -5 }}
-          transition={{ type: "spring", stiffness: 150 }}
-          className="bg-white p-10 rounded-3xl shadow-md border border-gray-200"
+          className="bg-white p-10 rounded-md shadow-md border border-line"
         >
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-            <FaHome className="text-[#9A0000]" /> Property Overview
+          <h2 className="font-display text-2xl font-medium text-ink mb-6 flex items-center gap-2">
+            <FaHome className="text-ink" /> Property Overview
           </h2>
-          <div className="grid grid-cols-2 gap-y-4 text-gray-700 text-sm leading-relaxed">
+          <div className="grid grid-cols-2 gap-y-4 text-ink/80 text-sm leading-relaxed">
             {property.price && (
-              <p className="col-span-2 text-2xl font-bold text-[#CA8B06] flex items-center gap-2">
+              <p className="col-span-2 font-display text-4xl font-medium text-ink lining-nums flex items-center gap-2 pb-4 mb-2 border-b border-line">
                 <FaRupeeSign /> {property.price}
               </p>
             )}
           
             {property.plot_size && (
               <p>
-                <span className="font-medium text-gray-900">Plot Size:</span>{" "}
+                <span className="font-medium text-ink">Plot Size:</span>{" "}
                 {property.plot_size}
               </p>
             )}
             {property.facing && (
               <p>
-                <span className="font-medium text-gray-900">Facing:</span>{" "}
+                <span className="font-medium text-ink">Facing:</span>{" "}
                 {property.facing}
               </p>
             )}
             {property.govt_authority && (
               <p>
-                <span className="font-medium text-gray-900">Authority:</span>{" "}
+                <span className="font-medium text-ink">Authority:</span>{" "}
                 {property.govt_authority}
               </p>
             )}
             {property.other_facilities && (
             <p className="col-span-2 flex items-center gap-2">
-  <span className="font-medium text-gray-900">Facilities:</span>
+  <span className="font-medium text-ink">Facilities:</span>
 
-  <span className="px-3 py-1 bg-orange-500 text-white rounded-lg text-xl font-semibold">
+  <span className="px-3 py-1 border border-ink text-ink rounded-full text-sm">
     {property.other_facilities}
   </span>
 </p>
 
             )}
             {property.description && (
-              <p className="col-span-2 text-gray-600">
-                <span className="font-medium text-gray-900">Description:</span>{" "}
+              <p className="col-span-2 text-muted">
+                <span className="font-medium text-ink">Description:</span>{" "}
                 {property.description}
               </p>
             )}
@@ -198,11 +196,9 @@ export default function MoreDetailsCommercial() {
 
         {/* Contact */}
         <motion.div
-          whileHover={{ y: -5 }}
-          transition={{ type: "spring", stiffness: 150 }}
-          className="bg-white p-10 rounded-3xl shadow-md border border-gray-200"
+          className="bg-white p-10 rounded-md shadow-md border border-line"
         >
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
+          <h2 className="font-display text-2xl font-medium text-ink mb-6 text-center">
             Contact Agent
           </h2>
           {submitted ? (
@@ -216,7 +212,7 @@ export default function MoreDetailsCommercial() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="relative">
-                <FaHome className="absolute left-3 top-3.5 text-gray-400" />
+                <FaHome className="absolute left-3 top-3.5 text-subtle" />
                 <input
                   type="text"
                   name="name"
@@ -224,12 +220,12 @@ export default function MoreDetailsCommercial() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                  className="field pl-10"
                 />
               </div>
 
               <div className="relative">
-                <FaEnvelope className="absolute left-3 top-3.5 text-gray-400" />
+                <FaEnvelope className="absolute left-3 top-3.5 text-subtle" />
                 <input
                   type="email"
                   name="email"
@@ -237,12 +233,12 @@ export default function MoreDetailsCommercial() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                  className="field pl-10"
                 />
               </div>
 
               <div className="relative">
-                <FaPhoneAlt className="absolute left-3 top-3.5 text-gray-400" />
+                <FaPhoneAlt className="absolute left-3 top-3.5 text-subtle" />
                 <input
                   type="text"
                   name="phone"
@@ -250,7 +246,7 @@ export default function MoreDetailsCommercial() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                  className="field pl-10"
                 />
               </div>
 
@@ -260,19 +256,17 @@ export default function MoreDetailsCommercial() {
                 value={formData.message}
                 onChange={handleChange}
                 rows="3"
-                className="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#CA8B06] text-sm"
+                className="field"
               />
 
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="relative w-full overflow-hidden rounded-xl border bg-[#CA8B06] py-3 font-medium text-white shadow-md hover:shadow-lg transition-all duration-500 group"
+                className="btn-primary relative w-full overflow-hidden group"
               >
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
                   Submit Enquiry
                 </span>
-                <span className="absolute inset-0 bg-[#9A0000] transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-xl"></span>
+                <span className="absolute inset-0 bg-graphite transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-md"></span>
               </motion.button>
             </form>
           )}
@@ -281,12 +275,12 @@ export default function MoreDetailsCommercial() {
 
       {/* === GALLERY === */}
       <div className="mt-20 flex flex-col items-center justify-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-14 border-b-4 border-[#CA8B06] pb-3">
+        <h2 className="display-lg text-ink mb-14">
           Property Gallery
         </h2>
 
         {gallery.length === 0 ? (
-          <p className="text-gray-500 text-sm text-center">No images available.</p>
+          <p className="text-muted text-sm text-center">No images available.</p>
         ) : (
           <div className="flex flex-col gap-24 w-full max-w-6xl px-4">
             {gallery.map((item, index) => (
@@ -300,20 +294,20 @@ export default function MoreDetailsCommercial() {
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                <div className="w-full md:w-1/2 overflow-hidden rounded-3xl shadow-xl border border-gray-200 bg-white">
+                <div className="w-full md:w-1/2 overflow-hidden rounded-md shadow-sm border border-line bg-white">
                   <img
                     src={`${API_URL}/uploads/${item.image}`}
                     alt={item.title}
-                    className="w-full h-[380px] object-cover transition-transform duration-700 hover:scale-105"
+                    className="w-full h-[380px] object-cover transition-transform duration-700"
                   />
                 </div>
 
                 <div className="w-full md:w-1/2 text-center md:text-left space-y-4">
-                  <h3 className="text-2xl font-semibold text-gray-900">
+                  <h3 className="font-display text-3xl font-medium leading-tight text-ink">
                     {item.title}
                   </h3>
                   {item.description && (
-                    <p className="text-gray-600 leading-relaxed tracking-wide">
+                    <p className="text-muted leading-relaxed">
                       {item.description}
                     </p>
                   )}

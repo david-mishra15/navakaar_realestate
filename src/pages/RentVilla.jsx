@@ -29,7 +29,7 @@ const RentVilla = () => {
   }, [currentPage]);
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
       {/* Top Banner */}
 
 
@@ -38,7 +38,7 @@ const RentVilla = () => {
         {villas.map((villa) => (
           <div
             key={villa.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition"
+            className="bg-white shadow-md rounded-sm overflow-hidden hover:shadow-md transition"
           >
             <img
               src={`${API_URL}${villa.thumbnail}`}
@@ -46,16 +46,16 @@ const RentVilla = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800">
+              <h2 className="text-lg font-semibold text-ink">
                 {villa.title}
               </h2>
-              <p className="text-gray-600 text-sm">📍 {villa.location}</p>
-              <p className="text-blue-700 font-medium mt-1">{villa.rent}</p>
+              <p className="text-muted text-sm">📍 {villa.location}</p>
+              <p className="text-ink font-medium mt-1">{villa.rent}</p>
 
               {/* View Details Link */}
               <Link
                 to={`/rent-villa-detail/${villa.id}`}
-                className="mt-3 block w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg"
+                className="mt-3 block w-full text-center bg-ink hover:bg-graphite text-white text-sm font-medium py-2 px-4 rounded-sm"
               >
                 View Details
               </Link>
@@ -64,7 +64,7 @@ const RentVilla = () => {
         ))}
 
         {villas.length === 0 && (
-          <p className="col-span-3 text-center text-gray-500">
+          <p className="col-span-3 text-center text-muted">
             No villas available.
           </p>
         )}
@@ -77,8 +77,8 @@ const RentVilla = () => {
           disabled={currentPage === 1}
           className={`px-4 py-2 rounded-md text-sm font-medium ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-blue-600 text-white hover:bg-blue-700"
+              ? "bg-gray-300 text-muted cursor-not-allowed"
+              : "bg-ink text-white hover:bg-graphite"
           }`}
         >
           Prev
@@ -90,7 +90,7 @@ const RentVilla = () => {
             onClick={() => setCurrentPage(index + 1)}
             className={`px-3 py-2 rounded-md text-sm font-medium ${
               currentPage === index + 1
-                ? "bg-blue-600 text-white"
+                ? "bg-ink text-white"
                 : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
@@ -105,8 +105,8 @@ const RentVilla = () => {
           disabled={currentPage === totalPages}
           className={`px-4 py-2 rounded-md text-sm font-medium ${
             currentPage === totalPages
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-blue-600 text-white hover:bg-blue-700"
+              ? "bg-gray-300 text-muted cursor-not-allowed"
+              : "bg-ink text-white hover:bg-graphite"
           }`}
         >
           Next

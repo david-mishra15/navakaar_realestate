@@ -1,4 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
+// Every colour resolves to a CSS variable defined in src/index.css, so the
+// whole site can be re-themed from one place. Values are "R G B" triplets so
+// Tailwind opacity modifiers (e.g. bg-ink/60) keep working.
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
 export default {
   content: [
     "./index.html",
@@ -11,18 +17,38 @@ export default {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
       colors: {
+        // Monochrome design tokens
+        ink: token("ink"),            // primary text, primary buttons
+        graphite: token("graphite"),  // hover state for dark fills
+        muted: token("muted"),        // secondary text on light
+        subtle: token("subtle"),      // meta text / icons on light
+        line: token("line"),          // hairlines & borders on light
+        paper: token("paper"),        // primary background (warm off-white)
+        stone: token("stone"),        // secondary background
+        night: token("night"),        // deep black sections
+        coal: token("coal"),          // charcoal panels on dark
+        mist: token("mist"),          // secondary text on dark
+
+        // Legacy names kept as aliases so existing markup inherits the
+        // monochrome theme without a rewrite of every class.
         brand: {
-          maroon: '#9A0000',
-          maroonDeep: '#6b0000',
-          glow: '#ff4d4d',
-          gold: '#CA8B06',
-          goldSoft: '#e0ad3f',
-          ink: '#2A2513',
-          paper: '#FBF7EF',
-          paperDeep: '#EDE2C8',
-          charcoal: '#17130D',
-          charcoalDeep: '#0F0C08',
+          maroon: token("ink"),
+          maroonDeep: token("graphite"),
+          glow: token("mist"),
+          gold: token("muted"),
+          goldSoft: token("mist"),
+          ink: token("ink"),
+          paper: token("paper"),
+          paperDeep: token("stone"),
+          charcoal: token("coal"),
+          charcoalDeep: token("night"),
         },
+      },
+      letterSpacing: {
+        eyebrow: "0.24em",
+      },
+      transitionTimingFunction: {
+        editorial: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

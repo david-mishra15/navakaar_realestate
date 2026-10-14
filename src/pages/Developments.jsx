@@ -34,41 +34,37 @@ export default function Developments() {
       : properties.filter((p) => p.type === activeType);
 
   return (
-    <section className="w-full bg-brand-paper py-16 sm:py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-paper section">
+      <div className="container-site">
 
-        {/* Heading */}
-        <div className="text-center mb-10 md:mb-14">
-          <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold mb-3">
-            Our Portfolio
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-brand-ink">
-            Premium Luxury Developments
-          </h2>
-          <div className="w-14 h-px bg-brand-gold mx-auto mt-5"></div>
-        </div>
+        {/* Heading + filters */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 md:mb-16">
+          <div>
+            <p className="eyebrow mb-5">Our Portfolio</p>
+            <h2 className="display-lg text-ink max-w-2xl">
+              Premium Luxury <span className="italic">Developments</span>
+            </h2>
+          </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-4 mb-10 md:mb-12 tracking-wide">
-          {["All", "Plots", "Flats", "Commercials", "Villas"].map((type) => (
-            <button
-              key={type}
-              onClick={() => setActiveType(type)}
-              className={`border px-5 sm:px-7 py-2 rounded-sm text-sm sm:text-base font-medium transition-all duration-300 ${
-                activeType === type
-                  ? "bg-brand-maroon border-brand-maroon text-white shadow-md"
-                  : "bg-white border-brand-ink/15 text-brand-ink hover:border-brand-maroon hover:text-brand-maroon"
-              }`}
-            >
-              {type}
-            </button>
-          ))}
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter developments">
+            {["All", "Plots", "Flats", "Commercials", "Villas"].map((type) => (
+              <button
+                key={type}
+                onClick={() => setActiveType(type)}
+                aria-pressed={activeType === type}
+                className={`chip ${activeType === type ? "chip-active" : ""}`}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Property Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-14">
           {filteredProperties.length === 0 && (
-            <p className="text-center col-span-full text-gray-500">
+            <p className="col-span-full border-t border-line pt-8 text-muted">
               No properties found.
             </p>
           )}

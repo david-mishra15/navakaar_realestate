@@ -220,12 +220,12 @@ export default function RequiredPropertyCards() {
 
   const renderPlotSizeDropdown = (name, sizes, unit) => (
     <>
-      <label className="block font-semibold mb-1">Plot Size ({unit})</label>
+      <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot Size ({unit})</label>
       <select
         name={name}
         value={formData[name]}
         onChange={handleChange}
-        className="w-full border border-gray-300 rounded-lg p-2"
+        className="field"
       >
         <option value="">Select Plot Size</option>
         {sizes.map((p) => (
@@ -241,7 +241,7 @@ export default function RequiredPropertyCards() {
           name={`custom${name.charAt(0).toUpperCase() + name.slice(1)}`}
           value={formData[`custom${name.charAt(0).toUpperCase() + name.slice(1)}`]}
           onChange={handleChange}
-          className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+          className="field mt-2"
           placeholder={`Enter custom plot size in ${unit}`}
         />
       )}
@@ -252,46 +252,46 @@ export default function RequiredPropertyCards() {
     <>
       {/* Contact Info */}
       <div>
-        <label className="block font-semibold mb-1">Contact Name</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Contact Name</label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
           required
         />
       </div>
       <div>
-        <label className="block font-semibold mb-1">Contact No.</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Contact No.</label>
         <input
           type="text"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
           required
         />
       </div>
       <div>
-        <label className="block font-semibold mb-1">Email (optional)</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Email (optional)</label>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         />
       </div>
 
       {/* Sector */}
       <div>
-        <label className="block font-semibold mb-1">Preferred Sector</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Preferred Sector</label>
         <select
           name="sector"
           value={formData.sector}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         >
           <option value="">Select Sector</option>
           {preferredSectors.map((s) => (
@@ -307,7 +307,7 @@ export default function RequiredPropertyCards() {
             name="customSector"
             value={formData.customSector}
             onChange={handleChange}
-            className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+            className="field mt-2"
             placeholder="Enter your preferred sector"
           />
         )}
@@ -317,12 +317,12 @@ export default function RequiredPropertyCards() {
       {activeTab !== "flats" ? (
         // Authority for Villa, Shop, Factory, Warehouse, Other
         <div>
-          <label className="block font-semibold mb-1">Govt. Authority</label>
+          <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Govt. Authority</label>
           <select
             name="authority"
             value={formData.authority}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-2"
+            className="field"
           >
             <option value="">Select Authority</option>
             {authorityOptions.map((a) => (
@@ -338,7 +338,7 @@ export default function RequiredPropertyCards() {
               name="customAuthority"
               value={formData.customAuthority}
               onChange={handleChange}
-              className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+              className="field mt-2"
               placeholder="Enter custom authority"
             />
           )}
@@ -346,12 +346,12 @@ export default function RequiredPropertyCards() {
       ) : (
         // Builder Name for Flats
         <div>
-          <label className="block font-semibold mb-1">Builder Name</label>
+          <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Builder Name</label>
           <select
             name="builder_name"
             value={formData.builder_name}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-2"
+            className="field"
           >
             <option value="">Select Builder</option>
             {builderOptions.map((b) => (
@@ -367,7 +367,7 @@ export default function RequiredPropertyCards() {
               name="customBuilderName"
               value={formData.customBuilderName}
               onChange={handleChange}
-              className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+              className="field mt-2"
               placeholder="Enter custom builder name"
             />
           )}
@@ -376,8 +376,8 @@ export default function RequiredPropertyCards() {
 
       {/* Facilities (Now Checkboxes, including Kitchen and Washroom) */}
       <div className="sm:col-span-2">
-        <label className="block font-semibold mb-1">Facilities Required (Select all that apply)</label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 border border-gray-300 rounded-lg p-3">
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Facilities Required (Select all that apply)</label>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 border border-line rounded-sm p-4 text-sm text-ink">
           {facilityOptions.map((f) => (
             <label key={f} className="flex items-center space-x-2">
               <input
@@ -386,7 +386,7 @@ export default function RequiredPropertyCards() {
                 value={f}
                 checked={formData.facilities.includes(f)}
                 onChange={handleChange}
-                className="form-checkbox text-[#CA8B06] rounded"
+                className="h-4 w-4 rounded-sm"
               />
               <span>{f}</span>
             </label>
@@ -396,25 +396,25 @@ export default function RequiredPropertyCards() {
 
       {/* Budget */}
       <div>
-        <label className="block font-semibold mb-1">Budget</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Budget</label>
         <input
           type="text"
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         />
       </div>
 
       {/* Any Other Choice */}
       <div className="sm:col-span-2">
-        <label className="block font-semibold mb-1">Additional Information if any</label>
+        <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Additional Information if any</label>
         <textarea
           name="anything_else"
           value={formData.anything_else}
           onChange={handleChange}
           rows="3"
-          className="w-full border border-gray-300 rounded-lg p-2"
+          className="field"
         />
       </div>
     </>
@@ -422,12 +422,12 @@ export default function RequiredPropertyCards() {
 
   const renderPetFriendlyField = () => (
     <div>
-      {/* <label className="block font-semibold mb-1">Pet Friendly?</label> */}
+      {/* <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Pet Friendly?</label> */}
       {/* <select
         name="pet_friendly"
         value={formData.pet_friendly}
         onChange={handleChange}
-        className="w-full border border-gray-300 rounded-lg p-2"
+        className="field"
       >
         <option value="">Select Option</option>
         {yesNoOptions.map((o) => (
@@ -440,31 +440,31 @@ export default function RequiredPropertyCards() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto mt-12 flex flex-col lg:flex-row gap-6 pt-20 px-4">
+    <div className="container-site pt-24 sm:pt-32 pb-16 sm:pb-24 flex flex-col lg:flex-row gap-6 lg:gap-12">
       {/* Sidebar Tabs */}
-      <div className="bg-white p-3 rounded-xl shadow-lg h-fit w-full lg:w-1/4 sticky top-24">
-        <div className="hidden lg:flex flex-col space-y-2">
+      <div className="sticky top-16 lg:top-28 z-20 -mx-5 px-5 sm:mx-0 sm:px-0 py-3 lg:py-0 bg-paper/95 backdrop-blur lg:bg-transparent lg:backdrop-blur-none h-fit w-auto lg:w-60 shrink-0">
+        <div className="hidden lg:flex flex-col border-t border-ink">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`w-full text-left px-4 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === t.id
-                  ? "bg-[#CA8B06] text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-[#9A0000]"
+              className={`w-full text-left py-4 border-b border-line text-[15px] transition-colors duration-300 ${activeTab === t.id
+                  ? "text-ink font-medium pl-3 border-l-2 border-l-ink"
+                  : "text-muted hover:text-ink"
                 }`}
             >
               {t.label}
             </button>
           ))}
         </div>
-        <div className="flex lg:hidden overflow-x-auto space-x-2 pb-2 scrollbar-hide">
+        <div className="flex lg:hidden overflow-x-auto gap-2 scrollbar-hide">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ${activeTab === t.id
-                  ? "bg-[#CA8B06] text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-[#9A0000]"
+              className={`chip flex-shrink-0 whitespace-nowrap ${activeTab === t.id
+                  ? "chip-active"
+                  : ""
                 }`}
             >
               {t.label}
@@ -474,7 +474,7 @@ export default function RequiredPropertyCards() {
       </div>
 
       {/* ===== FORM ===== */}
-      <div className="flex-1 bg-white rounded-2xl shadow-lg p-6 sm:p-8 border">
+      <div className="flex-1 min-w-0 bg-white rounded-sm border border-line p-6 sm:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -483,11 +483,11 @@ export default function RequiredPropertyCards() {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.4 }}
           >
-            <h2 className="text-2xl font-bold mb-6 text-gray-600 capitalize text-center sm:text-left">
+            <h2 className="display-md text-ink capitalize mb-8 sm:mb-10">
               {tabs.find((t) => t.id === activeTab)?.label} — Required on Rent
             </h2>
 
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
               {/* Common fields for all tabs */}
               {renderCommonFields()}
 
@@ -502,12 +502,12 @@ export default function RequiredPropertyCards() {
                   {renderPetFriendlyField()} {/* <--- PET FRIENDLY HERE */}
 
                   <div>
-                    <label className="block font-semibold mb-1">Bedroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bedroom</label>
                     <select
                       name="bedroom"
                       value={formData.bedroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bedroom</option>
                       {villaBedroomOptions.map((b) => (
@@ -519,12 +519,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bathroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bathroom</label>
                     <select
                       name="bathroom"
                       value={formData.bathroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bathroom</option>
                       {villaBathroomOptions.map((b) => (
@@ -536,12 +536,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Furnish Status</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Furnish Status</label>
                     <select
                       name="furnish"
                       value={formData.furnish}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Furnish Status</option>
                       {furnishOptions.map((f) => (
@@ -558,12 +558,12 @@ export default function RequiredPropertyCards() {
               {activeTab === "flats" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Flat Size (sq. ft.)</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Flat Size (sq. ft.)</label>
                     <select
                       name="flat_size"
                       value={formData.flat_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Flat Size</option>
                       {flatSizes.map((f) => (
@@ -579,7 +579,7 @@ export default function RequiredPropertyCards() {
                         name="customFlatSize"
                         value={formData.customFlatSize}
                         onChange={handleChange}
-                        className="w-full mt-2 border border-gray-300 rounded-lg p-2"
+                        className="field mt-2"
                         placeholder="Enter custom flat size in sq. ft."
                       />
                     )}
@@ -588,12 +588,12 @@ export default function RequiredPropertyCards() {
                   {renderPetFriendlyField()} {/* <--- PET FRIENDLY HERE */}
 
                   <div>
-                    <label className="block font-semibold mb-1">Bedroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bedroom</label>
                     <select
                       name="bedroom"
                       value={formData.bedroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bedroom</option>
                       {flatBedroomOptions.map((b) => (
@@ -605,12 +605,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bathroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bathroom</label>
                     <select
                       name="bathroom"
                       value={formData.bathroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Bathroom</option>
                       {flatBathroomOptions.map((b) => (
@@ -622,12 +622,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Furnish Status</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Furnish Status</label>
                     <select
                       name="furnish"
                       value={formData.furnish}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Furnish Status</option>
                       {furnishOptions.map((f) => (
@@ -649,12 +649,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Kitchen Available?</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Kitchen Available?</label>
                     <select
                       name="kitchen_available"
                       value={formData.kitchen_available}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Option</option>
                       {yesNoOptions.map((o) => (
@@ -665,12 +665,12 @@ export default function RequiredPropertyCards() {
                     </select>
                   </div>
                   <div>
-                    <label className="block font-semibold mb-1">Washroom Available?</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Washroom Available?</label>
                     <select
                       name="washroom_available"
                       value={formData.washroom_available}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Option</option>
                       {yesNoOptions.map((o) => (
@@ -692,12 +692,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Purpose</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Purpose</label>
                     <select
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Purpose</option>
                       {factoryPurposeOptions.map((p) => (
@@ -719,12 +719,12 @@ export default function RequiredPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Purpose</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Purpose</label>
                     <select
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Purpose</option>
                       {warehousePurposeOptions.map((p) => (
@@ -751,7 +751,7 @@ export default function RequiredPropertyCards() {
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="bg-[#CA8B06] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#9A0000] transition-all duration-300 w-full"
+                  className="btn-primary w-full mt-2"
                 >
                   Submit {tabs.find((t) => t.id === activeTab)?.label} Rent Form
                 </button>

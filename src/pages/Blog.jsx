@@ -65,7 +65,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-stone min-h-screen">
       {/* Hero Section */}
       <div
         className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-cover bg-center relative flex items-center justify-center"
@@ -76,7 +76,7 @@ const Blog = () => {
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
         <div className="text-center text-white px-4 md:px-10 relative z-20">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-medium mb-4">
             Welcome To Our Blogs
           </h1>
           <p className="text-sm sm:text-md md:text-lg mb-6 max-w-2xl mx-auto">
@@ -89,7 +89,7 @@ const Blog = () => {
 
       {/* Blog Section */}
       <div className="container mx-auto px-4 sm:px-6 md:px-16 py-12">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-medium text-ink mb-10 text-center">
           Our Latest Blogs
         </h2>
 
@@ -97,7 +97,7 @@ const Blog = () => {
           {currentBlogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-md shadow-md overflow-hidden hover:shadow-md transition-shadow duration-300"
             >
               <img
                 src={`${API_URL}${blog.image}`}
@@ -105,15 +105,15 @@ const Blog = () => {
                 className="w-full h-40 sm:h-48 md:h-56 object-cover"
               />
               <div className="p-4 sm:p-5">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-lg sm:text-xl font-semibold text-ink mb-2">
                   {blog.title}
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base mb-4">
+                <p className="text-muted text-sm sm:text-base mb-4">
                   {blog.description}
                 </p>
                 <Link
                   to={`/BlogDetails/${blog.id}`}
-                  className="px-3 py-2 sm:px-4 sm:py-2 bg-blue-600 text-white text-sm sm:text-base rounded-md hover:bg-blue-700 transition-colors duration-300"
+                  className="px-3 py-2 sm:px-4 sm:py-2 bg-ink text-white text-sm sm:text-base rounded-md hover:bg-graphite transition-colors duration-300"
                 >
                   Read More
                 </Link>
@@ -126,7 +126,7 @@ const Blog = () => {
         <div className="flex justify-center mt-10 space-x-2 items-center flex-wrap">
           <button
             onClick={prevPage}
-            className="px-3 sm:px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm sm:text-base"
+            className="px-3 sm:px-4 py-2 rounded-md bg-gray-200 text-ink/80 hover:bg-gray-300 text-sm sm:text-base"
             disabled={currentPage === 1}
           >
             Prev
@@ -136,7 +136,7 @@ const Blog = () => {
             page === "..." ? (
               <span
                 key={idx}
-                className="px-2 py-2 text-gray-700 text-sm sm:text-base"
+                className="px-2 py-2 text-ink/80 text-sm sm:text-base"
               >
                 ...
               </span>
@@ -146,8 +146,8 @@ const Blog = () => {
                 onClick={() => paginate(page)}
                 className={`px-3 sm:px-4 py-2 rounded-md text-sm sm:text-base ${
                   currentPage === page
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    ? "bg-ink text-white"
+                    : "bg-gray-200 text-ink/80 hover:bg-gray-300"
                 }`}
               >
                 {page}
@@ -157,7 +157,7 @@ const Blog = () => {
 
           <button
             onClick={nextPage}
-            className="px-3 sm:px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm sm:text-base"
+            className="px-3 sm:px-4 py-2 rounded-md bg-gray-200 text-ink/80 hover:bg-gray-300 text-sm sm:text-base"
             disabled={currentPage === totalPages}
           >
             Next

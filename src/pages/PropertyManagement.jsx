@@ -16,7 +16,7 @@ import {
 
 const PropertyManagement = () => {
   return (
-    <div className="font-sans text-gray-800">
+    <div className="font-sans text-ink">
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white">
         <img
@@ -41,12 +41,12 @@ const PropertyManagement = () => {
 
       {/* Intro Section */}
       <section className="max-w-6xl mx-auto px-6 py-12 leading-relaxed">
-        <p className="mb-4 text-gray-700 text-base md:text-lg">
+        <p className="mb-4 text-ink/80 text-base md:text-lg">
           NAVKAAR is a fantastic company to invest with, offering high
           standards, transparent processes, exclusive locations, and a strong
           legacy in real estate excellence.
         </p>
-        <p className="text-gray-700 text-base md:text-lg">
+        <p className="text-ink/80 text-base md:text-lg">
           With flexible terms and customer-focused service, NAVKAAR ensures that
           every property deal — whether residential or commercial — is a smooth
           and rewarding experience.
@@ -54,61 +54,61 @@ const PropertyManagement = () => {
       </section>
 
       {/* Checklist Section */}
-      <section className="bg-gray-50 py-12">
+      <section className="bg-stone py-12">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+          <h2 className="font-display text-2xl md:text-3xl font-medium text-center mb-10">
             An Investor’s Checklist when Buying a Property
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <FaUserTie className="text-orange-600 text-2xl" />,
+                icon: <FaUserTie className="text-ink text-2xl" />,
                 title: "Are You Working With The Right Broker?",
                 text: "Work with licensed professionals who understand NAVKAAR’s property standards.",
               },
               {
-                icon: <FaChartLine className="text-orange-600 text-2xl" />,
+                icon: <FaChartLine className="text-ink text-2xl" />,
                 title: "What Is The Potential Return?",
                 text: "Expect rental returns between 5% to 10%, depending on the property type.",
               },
               {
-                icon: <FaGlobe className="text-orange-600 text-2xl" />,
+                icon: <FaGlobe className="text-ink text-2xl" />,
                 title: "Can Foreigners Own Property?",
                 text: "Yes, freehold ownership is available in approved areas for non-citizens.",
               },
               {
-                icon: <FaClock className="text-orange-600 text-2xl" />,
+                icon: <FaClock className="text-ink text-2xl" />,
                 title: "How Much Time Does It Take?",
                 text: "Ownership transfer usually takes a few weeks, with NAVKAAR guiding every step.",
               },
               {
-                icon: <FaBuilding className="text-orange-600 text-2xl" />,
+                icon: <FaBuilding className="text-ink text-2xl" />,
                 title: "What Are The Amenities?",
                 text: "Our projects are surrounded by schools, hospitals, malls, and premium villas.",
               },
               {
-                icon: <FaFileSignature className="text-orange-600 text-2xl" />,
+                icon: <FaFileSignature className="text-ink text-2xl" />,
                 title: "When Will I Get Proof Of Ownership?",
                 text: "Ownership documents are provided quickly after transaction completion.",
               },
               {
-                icon: <FaMoneyBillWave className="text-orange-600 text-2xl" />,
+                icon: <FaMoneyBillWave className="text-ink text-2xl" />,
                 title: "What Are The Extra Charges?",
                 text: "Registration fees, agency charges, and maintenance costs may apply.",
               },
               {
-                icon: <FaHandsHelping className="text-orange-600 text-2xl" />,
+                icon: <FaHandsHelping className="text-ink text-2xl" />,
                 title: "The NAVKAAR Advantage",
                 text: "We collaborate with top developers to ensure maximum ROI for our clients.",
               },
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white p-6 shadow-md rounded-lg hover:shadow-xl transition"
+                className="bg-white p-6 shadow-md rounded-sm hover:shadow-md transition"
               >
                 <div className="mb-3">{item.icon}</div>
                 <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.text}</p>
+                <p className="text-sm text-muted">{item.text}</p>
               </div>
             ))}
           </div>
@@ -144,7 +144,7 @@ const PropertyManagement = () => {
             <p className="text-sm">Email: info@navkaar.com</p>
             <p className="text-sm">Phone: +971 54 581 6583</p>
             {/* Social Icons */}
-            <div className="flex gap-4 mt-4 text-orange-500">
+            <div className="flex gap-4 mt-4 text-ink">
               <a href="#">
                 <FaFacebookF />
               </a>
@@ -160,7 +160,7 @@ const PropertyManagement = () => {
             </div>
           </div>
         </div>
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 text-sm text-muted">
           © {new Date().getFullYear()} NAVKAAR – A Real Estate Co.
         </div>
       </footer>

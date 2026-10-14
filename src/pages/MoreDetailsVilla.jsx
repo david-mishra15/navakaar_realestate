@@ -59,13 +59,13 @@ export default function MoreDetailsVilla() {
 
   if (!villa)
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-100">
-        <p className="text-gray-500 text-lg animate-pulse">Loading villa details...</p>
+      <div className="flex justify-center items-center h-screen bg-stone">
+        <p className="text-muted text-lg animate-pulse">Loading villa details...</p>
       </div>
     );
 
   return (
-    <div className="max-w-7xl mx-auto px-5 pt-24 space-y-20 bg-gray-50 pb-24 ">
+    <div className="max-w-7xl mx-auto px-5 pt-24 space-y-20 bg-stone pb-24 ">
       {/* HERO SECTION */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -80,14 +80,14 @@ export default function MoreDetailsVilla() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="space-y-6"
         >
-          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
+          <h1 className="font-display text-3xl lg:text-4xl font-medium text-ink leading-snug">
             Premium{" "}
-            <span className="bg-gradient-to-r from-[#CA8B06] to-[#9A0000] bg-clip-text text-transparent">
+            <span className="text-ink">
               Luxury Villas
             </span>
           </h1>
 
-          <p className="text-gray-600 text-lg">
+          <p className="text-muted text-lg">
             Find your dream villa with luxury features and stunning locations.
           </p>
 
@@ -95,7 +95,7 @@ export default function MoreDetailsVilla() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 rounded-xl bg-[#CA8B06] text-white shadow-md hover:bg-[#9A0000]"
+              className="px-6 py-3 rounded-md bg-ink text-white shadow-md hover:bg-graphite"
             >
               Get Started
             </motion.button>
@@ -107,7 +107,7 @@ export default function MoreDetailsVilla() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="rounded-3xl overflow-hidden shadow-xl border bg-white"
+          className="rounded-md overflow-hidden shadow-sm border bg-white"
         >
           <img
             src={
@@ -116,7 +116,7 @@ export default function MoreDetailsVilla() {
                 : `${API_URL}/uploads/${villa.image}`
             }
             alt="Villa"
-            className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+            className="w-full h-[400px] object-cover transition-transform duration-700"
           />
         </motion.div>
       </motion.div>
@@ -126,14 +126,14 @@ export default function MoreDetailsVilla() {
         {/* OVERVIEW CARD */}
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white p-10 rounded-3xl shadow-md border"
+          className="bg-white p-10 rounded-md shadow-md border"
         >
-          <h2 className="text-2xl font-bold flex items-center gap-2 mb-5">
-            <FaHome className="text-[#9A0000]" /> Villa Overview
+          <h2 className="font-display text-2xl font-medium flex items-center gap-2 mb-5">
+            <FaHome className="text-ink" /> Villa Overview
           </h2>
 
-          <div className="grid grid-cols-2 gap-y-4 text-gray-700">
-            <p className="col-span-2 text-2xl font-bold text-[#CA8B06] flex items-center gap-2">
+          <div className="grid grid-cols-2 gap-y-4 text-ink/80">
+            <p className="col-span-2 font-display text-4xl font-medium text-ink lining-nums flex items-center gap-2 pb-4 mb-2 border-b border-line">
               <FaRupeeSign /> {villa.price}
             </p>
 
@@ -173,9 +173,9 @@ export default function MoreDetailsVilla() {
         {/* CONTACT FORM */}
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white p-10 rounded-3xl shadow-md border"
+          className="bg-white p-10 rounded-md shadow-md border"
         >
-          <h2 className="text-2xl font-bold mb-5 text-center">Contact Agent</h2>
+          <h2 className="font-display text-2xl font-medium mb-5 text-center">Contact Agent</h2>
 
           {submitted ? (
             <p className="text-green-600 font-semibold text-center">
@@ -190,7 +190,7 @@ export default function MoreDetailsVilla() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border rounded-xl"
+                className="w-full p-3 border rounded-md"
               />
 
               <input
@@ -200,7 +200,7 @@ export default function MoreDetailsVilla() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border rounded-xl"
+                className="w-full p-3 border rounded-md"
               />
 
               <input
@@ -210,7 +210,7 @@ export default function MoreDetailsVilla() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border rounded-xl"
+                className="w-full p-3 border rounded-md"
               />
 
               <textarea
@@ -219,12 +219,12 @@ export default function MoreDetailsVilla() {
                 rows="3"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full p-3 border rounded-xl"
+                className="w-full p-3 border rounded-md"
               />
 
               <button
                 type="submit"
-                className="w-full bg-[#CA8B06] text-white py-3 rounded-xl hover:bg-[#9A0000]"
+                className="w-full bg-ink text-white py-3 rounded-md hover:bg-graphite"
               >
                 Submit Enquiry
               </button>
@@ -235,10 +235,10 @@ export default function MoreDetailsVilla() {
 
       {/* GALLERY */}
       <div className="mt-20 text-center">
-        <h2 className="text-3xl font-bold mb-10">Villa Gallery</h2>
+        <h2 className="font-display text-3xl font-medium mb-10">Villa Gallery</h2>
 
         {gallery.length === 0 ? (
-          <p className="text-gray-500">No images available.</p>
+          <p className="text-muted">No images available.</p>
         ) : (
           <div className="flex flex-col gap-20 max-w-6xl mx-auto">
             {gallery.map((item, index) => (
@@ -252,17 +252,17 @@ export default function MoreDetailsVilla() {
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                <div className="w-full md:w-1/2 rounded-3xl overflow-hidden shadow-xl border bg-white">
+                <div className="w-full md:w-1/2 rounded-md overflow-hidden shadow-sm border bg-white">
                   <img
                     src={`${API_URL}/uploads/${item.image}`}
                     alt={item.title}
-                    className="w-full h-[380px] object-cover hover:scale-105 transition-transform"
+                    className="w-full h-[380px] object-cover transition-transform"
                   />
                 </div>
 
                 <div className="w-full md:w-1/2 text-center md:text-left space-y-3">
-                  <h3 className="text-2xl font-semibold">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="font-display text-2xl font-medium">{item.title}</h3>
+                  <p className="text-muted">{item.description}</p>
                 </div>
               </motion.div>
             ))}

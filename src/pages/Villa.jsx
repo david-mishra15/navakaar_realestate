@@ -28,7 +28,7 @@ const Villa = () => {
   }, [currentPage]);
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
 
 
       {/* Villas List */}
@@ -36,7 +36,7 @@ const Villa = () => {
         {villas.map((villa) => (
           <div
             key={villa.id}
-            className="bg-white border border-gray-200 shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition"
+            className="bg-white border border-line shadow-sm rounded-md overflow-hidden hover:shadow-md transition"
           >
             <img
               src={`${API_URL}${villa.thumbnail}`}
@@ -44,16 +44,16 @@ const Villa = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800">
+              <h2 className="text-lg font-semibold text-ink">
                 {villa.title}
               </h2>
-              <p className="text-gray-600 text-sm mt-1">📍 {villa.location}</p>
-              <p className="text-blue-700 font-semibold mt-1">{villa.price}</p>
+              <p className="text-muted text-sm mt-1">📍 {villa.location}</p>
+              <p className="text-ink font-semibold mt-1">{villa.price}</p>
 
               {/* Link to Villa Details */}
               <Link
                 to={`/villa-for-sale/${villa.id}`}
-                className="mt-4 block text-center bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition"
+                className="mt-4 block text-center bg-ink hover:bg-graphite text-white text-sm font-medium py-2 px-4 rounded-sm transition"
               >
                 View Details
               </Link>
@@ -62,7 +62,7 @@ const Villa = () => {
         ))}
 
         {villas.length === 0 && (
-          <p className="text-center col-span-3 text-gray-500">
+          <p className="text-center col-span-3 text-muted">
             No Villas Found
           </p>
         )}
@@ -75,8 +75,8 @@ const Villa = () => {
           disabled={currentPage === 1}
           className={`px-4 py-2 rounded-md text-sm font-medium transition ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-green-600 text-white hover:bg-green-700"
+              ? "bg-gray-300 text-muted cursor-not-allowed"
+              : "bg-ink text-white hover:bg-graphite"
           }`}
         >
           Prev
@@ -88,8 +88,8 @@ const Villa = () => {
             onClick={() => setCurrentPage(index + 1)}
             className={`px-3 py-2 rounded-md text-sm font-medium transition ${
               currentPage === index + 1
-                ? "bg-green-600 text-white"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                ? "bg-ink text-white"
+                : "bg-gray-200 text-ink/80 hover:bg-gray-300"
             }`}
           >
             {index + 1}
@@ -103,8 +103,8 @@ const Villa = () => {
           disabled={currentPage === totalPages}
           className={`px-4 py-2 rounded-md text-sm font-medium transition ${
             currentPage === totalPages
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-green-600 text-white hover:bg-green-700"
+              ? "bg-gray-300 text-muted cursor-not-allowed"
+              : "bg-ink text-white hover:bg-graphite"
           }`}
         >
           Next

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 
 const faqs = [
@@ -43,66 +43,77 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="max-w-5xl mx-auto py-20 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 border-t border-brand-ink/10">
-      {/* Heading */}
-      <div className="text-center mb-12 md:mb-14">
-        <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold mb-3">
-          Good To Know
-        </p>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-semibold text-brand-ink">
-          Frequently Asked{" "}
-          <span className="italic text-brand-maroon">
-            Questions
-          </span>
-        </h2>
-      </div>
+    <section className="bg-paper border-t border-line section">
+      <div className="container-site grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        {/* Heading */}
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-28">
+            <p className="eyebrow mb-5">Good To Know</p>
+            <h2 className="display-lg text-ink">
+              Frequently Asked <span className="italic">Questions</span>
+            </h2>
+          </div>
+        </div>
 
-      {/* FAQ List */}
-      <div className="space-y-4">
-        {faqs.map((faq, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: (index % 6) * 0.06 }}
-              className={`border rounded-md shadow-sm transition-all duration-300 ease-in-out ${
-                isOpen
-                  ? "bg-brand-maroon/5 border-brand-maroon/15"
-                  : "bg-white border-brand-ink/10 hover:shadow-md"
-              }`}
-            >
-              {/* Question Button */}
-              <button
-                className="w-full flex justify-between items-center px-5 sm:px-6 py-4 sm:py-5 text-left font-semibold text-brand-ink focus:outline-none"
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={isOpen}
+        {/* FAQ List */}
+        <div className="lg:col-span-8 border-t border-ink">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            const panelId = `faq-panel-${index}`;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: (index % 6) * 0.05 }}
+                className="border-b border-line"
               >
-                <span className="text-base sm:text-lg">{faq.question}</span>
-                {isOpen ? (
-                  <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6 text-brand-maroon transition-transform duration-300" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 transition-transform duration-300" />
-                )}
-              </button>
+                {/* Question Button */}
+                <button
+                  className="group w-full grid grid-cols-[2.5rem_1fr_auto] items-start gap-2 sm:gap-4 py-6 sm:py-7 text-left"
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                >
+                  <span className="pt-1.5 text-[11px] tabular-nums text-subtle">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-xl sm:text-2xl font-medium leading-snug text-ink">
+                    {faq.question}
+                  </span>
+                  <span
+                    className={`mt-0.5 flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-300 ${
+                      isOpen
+                        ? "bg-ink border-ink text-white"
+                        : "border-line text-ink group-hover:border-ink"
+                    }`}
+                  >
+                    <Plus
+                      size={16}
+                      strokeWidth={1.5}
+                      className={`transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                    />
+                  </span>
+                </button>
 
-              {/* Animated Answer */}
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen
-                    ? "max-h-[300px] opacity-100 px-5 sm:px-6 pb-4"
-                    : "max-h-0 opacity-0 px-5 sm:px-6"
-                }`}
-              >
-                <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+                {/* Animated Answer */}
+                <div
+                  id={panelId}
+                  className={`grid transition-all duration-500 ease-editorial ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pl-[3rem] sm:pl-[3.5rem] pr-12 pb-7 text-muted text-[15px] sm:text-base leading-relaxed max-w-2xl">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

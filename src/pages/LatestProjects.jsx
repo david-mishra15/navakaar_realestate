@@ -63,26 +63,21 @@ export default function LatestProjects() {
   };
 
   return (
-    <section className="w-full bg-brand-paperDeep py-16 sm:py-20 lg:py-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-stone section overflow-hidden">
+      <div className="container-site">
         {/* ===== Heading ===== */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 md:mb-14">
-          <div className="text-center sm:text-left">
-            <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold mb-3">
-              Fresh On The Market
-            </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-brand-ink">
-              Latest Projects
-            </h2>
-            <div className="w-14 h-px bg-brand-gold mt-5 mx-auto sm:mx-0"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-end mb-10 md:mb-14">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-5">Fresh On The Market</p>
+            <h2 className="display-lg text-ink">Latest Projects</h2>
           </div>
-          <p className="text-sm text-gray-500 max-w-xs text-center sm:text-right">
+          <p className="lg:col-span-5 lg:justify-self-end text-muted max-w-sm">
             Swipe or scroll through what's newest across the portfolio.
           </p>
         </div>
 
         {/* ===== Filter Buttons ===== */}
-        <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4 mb-10">
+        <div className="flex flex-wrap gap-2 mb-10 pb-10 border-b border-ink/10" role="group" aria-label="Filter projects">
           {["All", "Commercials", "Plots", "Flats", "Villas"].map((cat) => (
             <button
               key={cat}
@@ -90,11 +85,8 @@ export default function LatestProjects() {
                 setFilter(cat);
                 setCurrentPage(1);
               }}
-              className={`px-5 sm:px-6 py-2 rounded-sm font-medium border text-sm sm:text-base transition-all duration-300 ${
-                filter === cat
-                  ? "bg-brand-maroon border-brand-maroon text-white shadow-md"
-                  : "bg-white border-brand-ink/15 text-brand-ink hover:border-brand-maroon hover:text-brand-maroon"
-              }`}
+              aria-pressed={filter === cat}
+              className={`chip ${filter === cat ? "chip-active" : ""}`}
             >
               {cat}
             </button>
@@ -103,7 +95,7 @@ export default function LatestProjects() {
 
         {/* ===== Project Cards — horizontal filmstrip, snaps on mobile ===== */}
         {currentProjects.length === 0 ? (
-          <p className="text-center text-gray-500">No projects found.</p>
+          <p className="text-muted">No projects found.</p>
         ) : (
           <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:thin]">
             {currentProjects.map((project, index) => (
@@ -133,29 +125,22 @@ export default function LatestProjects() {
             <button
               onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
               disabled={currentPage === 1}
-              className={`px-3 py-1.5 rounded-sm font-medium border text-sm sm:text-base ${
-                currentPage === 1
-                  ? "bg-gray-200 text-white shadow-md cursor-not-allowed"
-                  : "bg-white border-brand-ink/15 text-brand-ink hover:border-brand-maroon hover:text-brand-maroon"
-              }`}
+              className="chip disabled:opacity-40 disabled:hover:border-line disabled:hover:text-muted disabled:cursor-not-allowed"
             >
               Prev
             </button>
 
             {getPageNumbers().map((num, i) =>
               num === "..." ? (
-                <span key={i} className="px-3 py-1 text-gray-500">
+                <span key={i} className="px-2 text-subtle">
                   ...
                 </span>
               ) : (
                 <button
                   key={i}
                   onClick={() => setCurrentPage(num)}
-                  className={`px-3 py-1.5 rounded-sm font-medium border text-sm sm:text-base ${
-                    currentPage === num
-                      ? "bg-brand-maroon border-brand-maroon text-white shadow-md"
-                      : "bg-white border-brand-ink/15 text-brand-ink hover:border-brand-maroon hover:text-brand-maroon"
-                  }`}
+                  aria-current={currentPage === num ? "page" : undefined}
+                  className={`chip !px-4 tabular-nums ${currentPage === num ? "chip-active" : ""}`}
                 >
                   {num}
                 </button>
@@ -165,11 +150,7 @@ export default function LatestProjects() {
             <button
               onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className={`px-3 py-1.5 rounded-sm font-medium border text-sm sm:text-base ${
-                currentPage === totalPages
-                  ? "bg-gray-200 text-white shadow-md cursor-not-allowed"
-                  : "bg-white border-brand-ink/15 text-brand-ink hover:border-brand-maroon hover:text-brand-maroon"
-              }`}
+              className="chip disabled:opacity-40 disabled:hover:border-line disabled:hover:text-muted disabled:cursor-not-allowed"
             >
               Next
             </button>

@@ -66,14 +66,14 @@ export default function Agents() {
         <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold mb-3">
           Our People
         </p>
-        <h2 className="text-3xl lg:text-4xl font-display font-semibold mb-6 text-brand-ink">
+        <h2 className="font-display text-3xl lg:text-4xl font-medium mb-6 text-brand-ink">
           Meet Our Top{" "}
           <span className="italic text-brand-maroon">
             Real Estate Agents
           </span>
         </h2>
 
-        <p className="max-w-2xl mx-auto text-gray-600 mb-16">
+        <p className="max-w-2xl mx-auto text-muted mb-16">
           Our expert team is here to guide you in finding your dream property and
           ensuring a smooth buying or selling experience.
         </p>
@@ -86,7 +86,7 @@ export default function Agents() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative bg-white rounded-md ring-1 ring-brand-ink/[0.06] overflow-hidden hover:ring-brand-ink/0 hover:shadow-xl transition duration-500"
+              className="group relative bg-white rounded-md ring-1 ring-brand-ink/[0.06] overflow-hidden hover:ring-brand-ink/0 hover:shadow-md transition duration-500"
             >
               {/* Agent Image */}
               <div className="relative">
@@ -104,7 +104,7 @@ export default function Agents() {
                     <FaFacebookF className="hover:text-brand-goldSoft cursor-pointer" />
                   </a>
                   <a href={agent.instagram} target="_blank" rel="noopener noreferrer">
-                    <FaInstagram className="hover:text-pink-500 cursor-pointer" />
+                    <FaInstagram className="hover:text-ink cursor-pointer" />
                   </a>
                   <a href={agent.twitter} target="_blank" rel="noopener noreferrer">
                     <FaTwitter className="hover:text-brand-goldSoft cursor-pointer" />
@@ -113,20 +113,20 @@ export default function Agents() {
                     <FaLinkedinIn className="hover:text-brand-goldSoft cursor-pointer" />
                   </a>
                   <a href={`tel:${agent.phone}`}>
-                    <FaPhone className="hover:text-green-500 cursor-pointer" />
+                    <FaPhone className="hover:text-ink cursor-pointer" />
                   </a>
                   <a href={agent.whatsapp} target="_blank" rel="noopener noreferrer">
-                    <FaWhatsapp className="hover:text-green-400 cursor-pointer" />
+                    <FaWhatsapp className="hover:text-ink cursor-pointer" />
                   </a>
                 </div>
               </div>
 
               {/* Agent Info */}
               <div className="p-6 text-center">
-                <h3 className="font-semibold text-lg text-gray-900">
+                <h3 className="font-semibold text-lg text-ink">
                   {agent.name}
                 </h3>
-                <p className="text-gray-500 text-sm">{agent.role}</p>
+                <p className="text-muted text-sm">{agent.role}</p>
               </div>
             </motion.div>
           ))}

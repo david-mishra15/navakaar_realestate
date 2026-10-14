@@ -1,6 +1,5 @@
 // src/components/StatsSection.jsx
 import { useEffect, useRef, useState } from "react";
-import { Building2, Trophy, Briefcase, Smile } from "lucide-react";
 import { motion } from "framer-motion";
 
 function useCountUp(target, shouldStart, duration = 1400) {
@@ -27,24 +26,24 @@ function useCountUp(target, shouldStart, duration = 1400) {
   return value;
 }
 
-function StatItem({ icon, target, prefix = "", suffix = "", comma, subtitle, description, inView }) {
+function StatItem({ target, prefix = "", suffix = "", comma, subtitle, description, inView, index }) {
   const value = useCountUp(target, inView);
   const display = comma ? value.toLocaleString("en-IN") : value;
 
   return (
-    <div className="relative text-center px-4 sm:px-6 first:before:hidden before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-white/10">
-      <div className="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-4 bg-white/5 text-brand-goldSoft">
-        {icon}
-      </div>
-      <div className="font-display font-bold text-3xl sm:text-4xl text-white tabular-nums">
+    <div className="h-full border-t border-line pt-6 pb-8 sm:pr-8">
+      <span className="block text-[11px] tabular-nums tracking-[0.2em] text-subtle mb-6">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <div className="font-display font-medium text-5xl sm:text-6xl leading-none tracking-[-0.02em] text-ink lining-nums whitespace-nowrap">
         {prefix}
         {display}
         {suffix}
       </div>
-      <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-brand-goldSoft mt-2">
+      <p className="mt-5 text-[12px] font-medium uppercase tracking-[0.18em] text-ink">
         {subtitle}
       </p>
-      <p className="text-xs sm:text-sm text-white/60 mt-2 leading-relaxed max-w-[22ch] mx-auto">
+      <p className="mt-2 text-sm text-muted leading-relaxed max-w-[28ch]">
         {description}
       </p>
     </div>
@@ -65,7 +64,7 @@ export default function StatsSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -73,7 +72,6 @@ export default function StatsSection() {
 
   const stats = [
     {
-      icon: <Building2 className="w-6 h-6" />,
       target: 3,
       prefix: "AED ",
       suffix: "B+",
@@ -81,21 +79,18 @@ export default function StatsSection() {
       description: "Sold every year across the expressway corridor",
     },
     {
-      icon: <Trophy className="w-6 h-6" />,
       target: 140,
       suffix: "+",
       subtitle: "Professionals",
       description: "Realtors and marketing specialists on staff",
     },
     {
-      icon: <Briefcase className="w-6 h-6" />,
       target: 16,
       suffix: " yrs",
       subtitle: "Experience",
       description: "In business on Yamuna Expressway since 2008",
     },
     {
-      icon: <Smile className="w-6 h-6" />,
       target: 5000,
       suffix: "+",
       comma: true,
@@ -105,39 +100,39 @@ export default function StatsSection() {
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-20 sm:py-24 lg:py-28 bg-gradient-to-b from-brand-charcoal to-brand-charcoalDeep"
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="font-display italic font-semibold text-brand-goldSoft mb-2">
-            Sixteen years, one street
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white">
-            The Most Followed Real Estate Brand – NAVKAAR
-          </h2>
-        </motion.div>
+    <section ref={sectionRef} className="bg-white border-b border-line">
+      <div className="container-site section">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Section Heading */}
+          <motion.div
+            className="lg:col-span-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="font-display italic text-lg text-muted mb-4">
+              Sixteen years, one street
+            </p>
+            <h2 className="display-md text-ink max-w-sm">
+              The Most Followed Real Estate Brand – NAVKAAR
+            </h2>
+          </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 mt-12 sm:mt-16">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <StatItem {...stat} inView={inView} />
-            </motion.div>
-          ))}
+          {/* Stats Grid */}
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
+                <StatItem {...stat} index={index} inView={inView} />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

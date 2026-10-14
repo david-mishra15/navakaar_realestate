@@ -18,58 +18,74 @@ export default function OurTeam() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div
-        className="relative h-[70vh] md:h-[80vh] w-full bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: `url(${teamBg})` }}
+      <header
+        data-theme="dark"
+        className="relative overflow-hidden bg-night h-[62vh] min-h-[440px] max-h-[640px]"
       >
-        <div className="absolute inset-0 bg-black/70"></div>
-        <h1 className="font-display relative text-white text-4xl md:text-5xl lg:text-6xl font-semibold z-10 tracking-wide drop-shadow-lg">
-          Our Team
-        </h1>
-      </div>
+        <img
+          src={teamBg}
+          alt=""
+          className="img-mono absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-night/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/20 to-night/40" />
+        <div className="relative h-full flex items-end">
+          <div className="container-site pb-14 sm:pb-20">
+            <p className="eyebrow !text-white/70 mb-6">About Navkaar</p>
+            <h1 className="display-xl text-white">Our Team</h1>
+          </div>
+        </div>
+      </header>
 
       {/* Intro Section */}
-      <section className="py-12 px-4 md:px-16 bg-white text-center">
-        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-brand-ink">
-          When property matters , Trust Navkaar
-        </h2>
-        <p className="max-w-2xl mx-auto text-gray-600 leading-relaxed text-base sm:text-lg">
-          Navkaar a brand who is specially working in yamuna expressway
-          properties
-        </p>
+      <section className="bg-white border-b border-line">
+        <div className="container-site section grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 lg:items-end">
+          <h2 className="lg:col-span-7 display-lg text-ink">
+            When property matters , <span className="italic">Trust Navkaar</span>
+          </h2>
+          <p className="lg:col-span-5 lead max-w-md">
+            Navkaar a brand who is specially working in yamuna expressway
+            properties
+          </p>
+        </div>
       </section>
 
       {/* Management Section */}
-      <section className="py-16 px-4 md:px-16 bg-gray-50">
-        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold mb-12 text-center text-brand-ink">
-          Meet Our Management
-        </h2>
+      <section className="bg-paper">
+        <div className="container-site section grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="eyebrow mb-5">Leadership</p>
+            <h2 className="display-lg text-ink">
+              Meet Our <span className="italic">Management</span>
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12 max-w-3xl mx-auto">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500"
-            >
-              {/* Initials avatar */}
-              <div
-                role="img"
-                aria-label={member.name}
-                className="relative w-full h-[300px] md:h-[340px] overflow-hidden bg-brand-paperDeep flex items-center justify-center"
-              >
-                <span className="font-display text-6xl md:text-7xl font-semibold text-brand-maroon tracking-wide transition-transform duration-700 group-hover:scale-110">
-                  {getInitials(member.name)}
-                </span>
-              </div>
+          <ul className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {teamMembers.map((member, index) => (
+              <li key={index} className="group">
+                {/* Initials avatar */}
+                <div
+                  role="img"
+                  aria-label={member.name}
+                  className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line bg-white flex items-center justify-center transition-colors duration-500 group-hover:bg-night group-hover:border-night"
+                >
+                  <span className="absolute top-5 left-5 text-[11px] tabular-nums tracking-[0.2em] text-subtle transition-colors duration-500 group-hover:text-mist">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display font-medium text-[88px] sm:text-[104px] leading-none tracking-[0.02em] text-ink transition-colors duration-500 group-hover:text-white">
+                    {getInitials(member.name)}
+                  </span>
+                </div>
 
-              {/* Info */}
-              <div className="p-6 text-center">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
-                  {member.name}
-                </h3>
-              </div>
-            </div>
-          ))}
+                {/* Info */}
+                <div className="pt-5 pb-5 border-b border-ink/15">
+                  <h3 className="font-display text-2xl sm:text-[28px] font-medium leading-tight text-ink">
+                    {member.name}
+                  </h3>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>

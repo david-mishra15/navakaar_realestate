@@ -50,7 +50,7 @@ const RentVillaDetails = () => {
   if (!villa) {
     return (
       <div className="w-full h-screen flex items-center justify-center px-4">
-        <p className="text-gray-600 text-lg text-center">
+        <p className="text-muted text-lg text-center">
           Villa details not found.
         </p>
       </div>
@@ -62,7 +62,7 @@ const RentVillaDetails = () => {
     : `${API_URL}${villa.thumbnail}`;
 
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full bg-stone">
       {/* ✅ Hero / Banner */}
       <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px]">
         <img
@@ -70,8 +70,8 @@ const RentVillaDetails = () => {
           alt={villa.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-blue-900/50 flex flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg">
+        <div className="absolute inset-0 bg-ink/50 flex flex-col items-center justify-center px-4 text-center">
+          <h1 className="font-display text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium">
             {villa.title}
           </h1>
           <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl mt-2">
@@ -84,7 +84,7 @@ const RentVillaDetails = () => {
       <div className="max-w-7xl mx-auto px-4 mt-6">
         <Link
           to="/rent-villa"
-          className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+          className="inline-block bg-ink text-white px-5 py-2 rounded-sm shadow hover:bg-graphite transition"
         >
           ← Back to all apartments
         </Link>
@@ -92,15 +92,15 @@ const RentVillaDetails = () => {
 
       {/* ✅ Gallery Section */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <h3 className="text-2xl font-bold mb-10 text-gray-800 text-center">
+        <h3 className="font-display text-2xl font-medium mb-10 text-ink text-center">
           Villa Gallery
         </h3>
 
-        {loading && <p className="text-gray-600 mb-4">Loading images...</p>}
+        {loading && <p className="text-muted mb-4">Loading images...</p>}
         {error && <p className="text-red-600 mb-4">{error}</p>}
 
         {images.length === 0 ? (
-          <p className="text-gray-600 text-center">
+          <p className="text-muted text-center">
             No images available for this villa.
           </p>
         ) : (
@@ -108,7 +108,7 @@ const RentVillaDetails = () => {
             {images.map((img, index) => (
               <div
                 key={img.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+                className="bg-white rounded-md shadow-sm overflow-hidden hover:shadow-md transition"
               >
                 <div
                   className={`flex flex-col md:flex-row ${
@@ -130,10 +130,10 @@ const RentVillaDetails = () => {
 
                   {/* Text */}
                   <div className="md:w-1/2 w-full flex flex-col justify-center p-6">
-                    <h4 className="text-2xl font-semibold text-gray-900 mb-4">
+                    <h4 className="font-display text-2xl font-medium text-ink mb-4">
                       {villa.title}
                     </h4>
-                    <p className="text-gray-700 text-base leading-relaxed">
+                    <p className="text-ink/80 text-base leading-relaxed">
                       {img.description || "No description available."}
                     </p>
                   </div>

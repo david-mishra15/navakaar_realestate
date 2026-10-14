@@ -120,19 +120,19 @@ export default function SellPropertyCards() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-12 flex flex-col lg:flex-row gap-6 pt-20 px-4">
+    <div className="container-site pt-24 sm:pt-32 pb-16 sm:pb-24 flex flex-col lg:flex-row gap-6 lg:gap-12">
       {/* ===== Sidebar / Tabs ===== */}
-      <div className="bg-white p-3 rounded-xl shadow-lg h-fit w-full lg:w-1/4 sticky top-24">
+      <div className="sticky top-16 lg:top-28 z-20 -mx-5 px-5 sm:mx-0 sm:px-0 py-3 lg:py-0 bg-paper/95 backdrop-blur lg:bg-transparent lg:backdrop-blur-none h-fit w-auto lg:w-60 shrink-0">
         {/* --- Desktop Vertical Tabs --- */}
         {/* ===== Desktop Vertical Tabs ===== */}
-        <div className="hidden lg:flex flex-col space-y-2">
+        <div className="hidden lg:flex flex-col border-t border-ink">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`w-full text-left px-4 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === t.id
-                ? "bg-[#CA8B06] text-white shadow-md"      // Golden for active
-                : "bg-gray-100 text-gray-700 hover:bg-[#9A0000]" // Dark red on hover
+              className={`w-full text-left py-4 border-b border-line text-[15px] transition-colors duration-300 ${activeTab === t.id
+                ? "text-ink font-medium pl-3 border-l-2 border-l-ink"
+                : "text-muted hover:text-ink"
                 }`}
             >
               {t.label}
@@ -141,14 +141,14 @@ export default function SellPropertyCards() {
         </div>
 
         {/* ===== Mobile Horizontal Tabs ===== */}
-        <div className="flex lg:hidden overflow-x-auto space-x-2 pb-2 scrollbar-hide">
+        <div className="flex lg:hidden overflow-x-auto gap-2 scrollbar-hide">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ${activeTab === t.id
-                ? "bg-[#CA8B06] text-white shadow-md"      // Golden for active
-                : "bg-gray-100 text-gray-700 hover:bg-[#9A0000]" // Dark red on hover
+              className={`chip flex-shrink-0 whitespace-nowrap ${activeTab === t.id
+                ? "chip-active"
+                : ""
                 }`}
             >
               {t.label}
@@ -159,7 +159,7 @@ export default function SellPropertyCards() {
       </div>
 
       {/* ===== Form Content ===== */}
-      <div className="flex-1 bg-white rounded-2xl shadow-lg p-6 sm:p-8 border">
+      <div className="flex-1 min-w-0 bg-white rounded-sm border border-line p-6 sm:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -168,17 +168,17 @@ export default function SellPropertyCards() {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.4 }}
           >
-            <h2 className="text-xl sm:text-2xl font-bold mb-6  text-[#2A2513] capitalize text-center sm:text-left">
+            <h2 className="display-md text-ink capitalize mb-8 sm:mb-10">
               {activeTab.replace("_", " ")} Details Form
             </h2>
 
             <form
               onSubmit={handleSubmit}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5"
             >
               {/* ===== Basic Info ===== */}
               <div>
-                <label className="block font-semibold mb-1 text-sm sm:text-base">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Full Name
                 </label>
                 <input
@@ -186,14 +186,14 @@ export default function SellPropertyCards() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg p-2 text-sm sm:text-base"
+                  className="field"
                   placeholder="Enter your full name"
                   required
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1 text-sm sm:text-base">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Phone / WhatsApp
                 </label>
                 <input
@@ -201,14 +201,14 @@ export default function SellPropertyCards() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg p-2 text-sm sm:text-base"
+                  className="field"
                   placeholder="Enter phone number"
                   required
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1 text-sm sm:text-base">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Email
                 </label>
                 <input
@@ -216,7 +216,7 @@ export default function SellPropertyCards() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg p-2 text-sm sm:text-base"
+                  className="field"
                   placeholder="Enter email (optional)"
                 />
               </div>
@@ -227,31 +227,31 @@ export default function SellPropertyCards() {
                 activeTab === "commercial") && (
                   <>
                     <div>
-                      <label className="block font-semibold mb-1">Sector</label>
+                      <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Sector</label>
                       <input
                         type="text"
                         name="sector"
                         value={formData.sector}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2"
+                        className="field"
                         placeholder="Enter Sector"
                       />
                     </div>
 
                     <div>
-                      <label className="block font-semibold mb-1">Plot No.</label>
+                      <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Plot No.</label>
                       <input
                         type="text"
                         name="plot_no"
                         value={formData.plot_no}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2"
+                        className="field"
                         placeholder="Enter Plot Number"
                       />
                     </div>
 
                     <div>
-                      <label className="block font-semibold mb-1">
+                      <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                         Block No.
                       </label>
                       <input
@@ -259,13 +259,13 @@ export default function SellPropertyCards() {
                         name="block_no"
                         value={formData.block_no}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2"
+                        className="field"
                         placeholder="Enter Block Number"
                       />
                     </div>
 
                     <div>
-                      <label className="block font-semibold mb-1">
+                      <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                         Plot Size
                       </label>
                       <input
@@ -273,18 +273,18 @@ export default function SellPropertyCards() {
                         name="plot_size"
                         value={formData.plot_size}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2"
+                        className="field"
                         placeholder="Enter Plot Size (e.g. 200 Sq.Yds)"
                       />
                     </div>
 
                     <div>
-                      <label className="block font-semibold mb-1">Facing</label>
+                      <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Facing</label>
                       <select
                         name="facing"
                         value={formData.facing}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2"
+                        className="field"
                       >
                         <option value="">Select Facing</option>
                         {facingOptions.map((opt) => (
@@ -301,20 +301,20 @@ export default function SellPropertyCards() {
               {activeTab === "flats" && (
                 <>
                   <div>
-                    <label className="block font-semibold mb-1">Sector</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Sector</label>
                     <input
                       type="text"
                       name="sector"
                       value={formData.sector}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter Sector"
                     />
                   </div>
 
                   <div>
                     {/* Updated: Replaced "Govt. Authority" with "Builder Name" */}
-                    <label className="block font-semibold mb-1">
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                       Builder Name
                     </label>
                     <input
@@ -322,24 +322,24 @@ export default function SellPropertyCards() {
                       name="builder_name" // Changed name to builder_name
                       value={formData.builder_name}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter Builder Name"
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold mb-1">Flat No.</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Flat No.</label>
                     <input
                       type="text"
                       name="flat_no"
                       value={formData.flat_no}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter Flat Number"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                       Flat Size (sq.ft)
                     </label>
                     <input
@@ -347,42 +347,42 @@ export default function SellPropertyCards() {
                       name="flat_size"
                       value={formData.flat_size}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="e.g. 1200 Sq.Ft"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bedroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bedroom</label>
                     <input
                       type="number"
                       name="bedroom"
                       value={formData.bedroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter Bedroom Count"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Bathroom</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Bathroom</label>
                     <input
                       type="number"
                       name="bathroom"
                       value={formData.bathroom}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter Bathroom Count"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Furnish</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Furnish</label>
                     <select
                       name="furnish"
                       value={formData.furnish}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Furnish Type</option>
                       {furnishOptions.map((f) => (
@@ -394,37 +394,37 @@ export default function SellPropertyCards() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold mb-1">Status</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Status</label>
                     <input
                       type="text"
                       name="status"
                       value={formData.status}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Ready to Move / Under Construction"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block font-semibold mb-1">Address</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Address</label>
                     <input
                       type="text"
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                       placeholder="Enter Full Address"
                     />
                   </div>
 
                   {/* New: Pet Friendly Field - Only for Flats */}
                   {/* <div>
-                    <label className="block font-semibold mb-1">Pet Friendly</label>
+                    <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">Pet Friendly</label>
                     <select
                       name="pet_friendly"
                       value={formData.pet_friendly}
                       onChange={handleChange}
-                      className="w-full border border-gray-300 rounded-lg p-2"
+                      className="field"
                     >
                       <option value="">Select Option</option>
                       {petFriendlyOptions.map((opt) => (
@@ -439,7 +439,7 @@ export default function SellPropertyCards() {
 
               {/* ===== Common Fields (Appearing in all forms) ===== */}
               <div>
-                <label className="block font-semibold mb-1">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Other Facilities
                 </label>
                 <input
@@ -447,14 +447,14 @@ export default function SellPropertyCards() {
                   name="facilities"
                   value={formData.facilities}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg p-2"
+                  className="field"
                   placeholder="e.g. Near Market, School, Metro etc."
                 />
               </div>
 
 
               <div className="sm:col-span-2">
-                <label className="block font-semibold mb-1">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Anything Else
                 </label>
                 <textarea
@@ -462,13 +462,13 @@ export default function SellPropertyCards() {
                   value={formData.anything_else}
                   onChange={handleChange}
                   rows="3"
-                  className="w-full border border-gray-300 rounded-lg p-2"
+                  className="field"
                   placeholder="Add any additional information"
                 ></textarea>
               </div>
 
               <div>
-                <label className="block font-semibold mb-1">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Expected Price
                 </label>
                 <input
@@ -476,13 +476,13 @@ export default function SellPropertyCards() {
                   name="expected_price"
                   value={formData.expected_price}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg p-2"
+                  className="field"
                   placeholder="Enter Expected Price"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block font-semibold mb-1">
+                <label className="block text-[12px] font-medium tracking-[0.04em] text-muted mb-2">
                   Attach Photos
                 </label>
                 <input
@@ -491,14 +491,14 @@ export default function SellPropertyCards() {
                   multiple
                   accept="image/*"
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg p-2"
+                  className="field"
                 />
               </div>
 
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="bg-[#CA8B06] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#9A0000] transition-all duration-300 w-full"
+                  className="btn-primary w-full mt-2"
                 >
                   Submit{" "}
                   {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Form

@@ -52,7 +52,7 @@ export default function LatestDetails() {
         <div className="absolute inset-0 bg-black/60"></div>
         {/* Centered Text */}
         <div className="relative z-10 flex items-center justify-center h-full text-center px-4 sm:px-6">
-          <h1 className="text-2xl mt-[55px] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
+          <h1 className="font-display text-2xl mt-[55px] sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white">
             {project.title}
           </h1>
         </div>
@@ -69,7 +69,7 @@ export default function LatestDetails() {
               }`}
             >
               {/* Image */}
-              <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow-lg">
+              <div className="w-full md:w-1/2 overflow-hidden rounded-sm">
                 <img
                   src={`${API_URL}${img.image}`}
                   alt={img.title}
@@ -79,10 +79,10 @@ export default function LatestDetails() {
 
               {/* Text */}
               <div className="w-full md:w-1/2 space-y-3 sm:space-y-4">
-                <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">
+                <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-medium text-ink">
                   {img.title}
                 </h4>
-                <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+                <p className="text-muted text-base sm:text-lg leading-relaxed">
                   {img.description}
                 </p>
               </div>
@@ -90,7 +90,7 @@ export default function LatestDetails() {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 py-10">
+        <p className="text-center text-muted py-10">
           No gallery images available.
         </p>
       )}

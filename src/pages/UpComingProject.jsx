@@ -42,7 +42,7 @@ const UpComingProjectUser = () => {
         {currentData.map((item) => (
           <div
             key={item.id}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300"
+            className="bg-white rounded-md shadow-sm overflow-hidden hover:shadow-md transition duration-300"
           >
             {item.thumbnail && (
               <img
@@ -52,17 +52,17 @@ const UpComingProjectUser = () => {
               />
             )}
             <div className="p-3 sm:p-4">
-              <h2 className="text-base sm:text-lg font-semibold text-gray-800">
+              <h2 className="text-base sm:text-lg font-semibold text-ink">
                 {item.title}
               </h2>
-              <p className="text-xs sm:text-sm text-gray-600 mt-2">
+              <p className="text-xs sm:text-sm text-muted mt-2">
                 {item.description}
               </p>
             </div>
           </div>
         ))}
         {projects.length === 0 && (
-          <p className="text-center col-span-full text-gray-500 mt-4">
+          <p className="text-center col-span-full text-muted mt-4">
             No projects found.
           </p>
         )}
@@ -72,19 +72,19 @@ const UpComingProjectUser = () => {
       {projects.length > dataPerPage && (
         <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 my-6">
           <button
-            className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg disabled:opacity-50"
+            className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-sm disabled:opacity-50"
             onClick={() => setCurrentPage((prev) => prev - 1)}
             disabled={currentPage === 1}
           >
             Prev
           </button>
 
-          <span className="text-gray-700 text-sm sm:text-base">
+          <span className="text-ink/80 text-sm sm:text-base">
             Page {currentPage} of {totalPages}
           </span>
 
           <button
-            className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg disabled:opacity-50"
+            className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-sm disabled:opacity-50"
             onClick={() => setCurrentPage((prev) => prev + 1)}
             disabled={currentPage === totalPages}
           >

@@ -9,7 +9,7 @@ import logo from "../assets/logoReal.jpeg";
 export default function SplashScreen({ fadingOut }) {
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-brand-charcoal ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-night ${
         fadingOut ? "animate-splash-fadeout" : ""
       }`}
       aria-hidden="true"
@@ -27,14 +27,14 @@ export default function SplashScreen({ fadingOut }) {
             style={{
               animationDelay: "0.5s",
               background:
-                "linear-gradient(105deg, transparent 40%, rgba(224,173,63,0.55) 50%, transparent 60%)",
+                "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%)",
             }}
           />
         </div>
 
         {/* Tagline */}
         <p
-          className="mt-5 font-sans text-[11px] sm:text-xs font-medium tracking-[0.32em] uppercase text-brand-goldSoft opacity-0 animate-splash-text"
+          className="mt-5 font-sans text-[11px] sm:text-xs font-medium tracking-[0.32em] uppercase text-mist opacity-0 animate-splash-text"
           style={{ animationDelay: "1s" }}
         >
           A Real Estate Co.
