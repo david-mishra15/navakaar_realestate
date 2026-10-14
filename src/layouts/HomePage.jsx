@@ -7,7 +7,6 @@ import WhyChoose from "../pages/WhyChoose";
 import MapSection from "../pages/MapSection";
 import FAQSection from "../pages/FAQSection";
 import SideBar from "../pages/SideBar";
-import BuilderLogos from "../pages/alllogo";
 
 // ✅ Import your popup component here
 import ContactPopup from "../pages/PopupContact";
@@ -20,7 +19,6 @@ export default function HomePage() {
   return (
     <>
       <Banner />
-      <BuilderLogos />
       <StatsSection />
       <Developments />
       <WhyChoose />

@@ -98,8 +98,7 @@ export default function Footer() {
             </strong>
           </p>
           <p className="text-gray-300 text-base">navkaarnoida@gmail.com</p>
-          <p className="text-gray-300 text-base">+91-9996663035</p>
-          <p className="text-gray-300 text-base mb-4">+91-9996663239</p>
+          <p className="text-gray-300 text-base mb-4">+91-9996663035</p>
 
           <div className="flex space-x-4 text-gray-300 text-2xl mt-3">
             <a

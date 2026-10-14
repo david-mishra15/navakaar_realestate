@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowUp, FaWhatsapp, FaPhone } from "react-icons/fa";
+import { FaArrowUp, FaPhone } from "react-icons/fa";
 
 const SideBar = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,16 +36,6 @@ const SideBar = () => {
           <FaArrowUp className="text-red-500 text-xl" />
         </button>
       )}
-
-      {/* WhatsApp Button */}
-      <a
-        href="https://wa.me/919996663239" // ✅ Apna WhatsApp number daal (country code ke sath, bina + ke)
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center w-12 h-12 bg-green-500 border border-green-600 rounded-full shadow-md hover:bg-green-600 transition-all duration-300"
-      >
-        <FaWhatsapp className="text-white text-xl" />
-      </a>
 
       {/* Call Button */}
       <a

@@ -108,7 +108,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-semibold text-gray-800">Telephone:</p>
                   <p className="text-sm sm:text-base text-gray-600">
-                    +91-9996663035, +91-9996663239
+                    +91-9996663035
                   </p>
                 </div>
               </div>
