@@ -10,10 +10,17 @@ import fallbackBannerImg from "../assets/banner.jpg";
 const FALLBACK_BANNERS = [
   {
     title: "Your Property. Our Priority.",
-    subtitle:
-      "Premium plots, apartments and villas along India's fastest-growing real estate corridor.",
     isFallback: true,
   },
+];
+
+// Shown under the hero headline on every slide
+const CONSULTANT_TITLE = "Property Legal & Due Diligence Consultant";
+const CONSULTANT_SERVICES = [
+  "Real Estate Advisory",
+  "Property Chain Verification",
+  "Title Due Diligence",
+  "Property Litigation Coordination",
 ];
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -123,11 +130,23 @@ export default function Banner() {
                   {banner.title || "Your Property. Our Priority."}
                 </h1>
 
-                {banner.subtitle && (
-                  <p className={`mt-6 sm:mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-white/75 ${fadeDelay}`}>
-                    {banner.subtitle}
+                {/* Consultant title + services (replaces the slide subtitle) */}
+                <div className={`mt-6 sm:mt-8 max-w-4xl ${fadeDelay}`}>
+                  <p className="font-display text-2xl sm:text-3xl leading-snug text-white">
+                    {CONSULTANT_TITLE}
                   </p>
-                )}
+                  {/* 2x2 grid on small screens; one separated line on desktop */}
+                  <ul className="mt-4 grid grid-cols-2 gap-x-5 gap-y-2 max-w-xl lg:max-w-none lg:flex lg:items-center lg:gap-x-3 text-sm sm:text-base leading-snug text-white/75">
+                    {CONSULTANT_SERVICES.map((service, i) => (
+                      <li key={service} className="lg:flex lg:items-center lg:gap-3 lg:whitespace-nowrap">
+                        {i > 0 && (
+                          <span aria-hidden="true" className="hidden lg:inline text-white/35">|</span>
+                        )}
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
                 {/* Calls to action: one primary, one secondary, one quiet link */}
                 <div className={`mt-10 sm:mt-12 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 ${fadeDelay}`}>
