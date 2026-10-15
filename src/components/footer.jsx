@@ -103,7 +103,22 @@ export default function Footer() {
             </address>
             <div className="mt-6 grid gap-2 text-[15px]">
               <p className="text-white">navkaarnoida@gmail.com</p>
-              <p className="text-white tabular-nums">+91-9996663035</p>
+            </div>
+
+            {/* Consultant contact */}
+            <div className="mt-6 pt-6 border-t border-white/10 max-w-md">
+              <p className="font-display text-xl text-white leading-snug">
+                Property Legal &amp; Due Diligence Consultant
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-mist">
+                Real Estate Advisory | Property Chain Verification | Title Due Diligence | Property Litigation Coordination
+              </p>
+              <a
+                href="tel:+919996663239"
+                className="mt-3 inline-block text-[15px] text-white tabular-nums hover:text-mist transition-colors duration-300"
+              >
+                +91-9996663239
+              </a>
             </div>
 
             <div className="flex gap-3 mt-8">

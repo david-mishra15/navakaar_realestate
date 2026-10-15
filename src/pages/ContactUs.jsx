@@ -51,7 +51,13 @@ export default function ContactPage() {
         "FF-37, The Hub Runway Suits, Gaur Yamuna City, Sector-19, Greater Noida, 203201, UP, INDIA",
     },
     { Icon: Mail, label: "E-Mail", value: "navkaarnoida@gmail.com" },
-    { Icon: Phone, label: "Telephone", value: "+91-9996663035" },
+    {
+      Icon: Phone,
+      label: "Telephone",
+      value: "+91-9996663239",
+      title: "Property Legal & Due Diligence Consultant",
+      note: "Real Estate Advisory | Property Chain Verification | Title Due Diligence | Property Litigation Coordination",
+    },
     { Icon: Mail, label: "Post Box", value: "128270" },
   ];
 
@@ -114,6 +120,12 @@ export default function ContactPage() {
                       {row.label}
                     </dt>
                     <dd className="mt-1.5 text-[15px] leading-relaxed text-ink">{row.value}</dd>
+                    {row.title && (
+                      <dd className="mt-3 font-display text-lg leading-snug text-ink">{row.title}</dd>
+                    )}
+                    {row.note && (
+                      <dd className="mt-1 text-[13px] leading-relaxed text-muted">{row.note}</dd>
+                    )}
                   </div>
                 </div>
               ))}

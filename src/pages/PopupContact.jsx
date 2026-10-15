@@ -124,8 +124,14 @@ export default function ContactPopupOnScroll() {
 
             {/* Only Phone Info */}
             <div className="border-t border-line px-7 sm:px-10 py-5 text-sm">
-              <p className="flex items-center gap-2.5 text-ink tabular-nums">
-                <Phone size={15} strokeWidth={1.5} className="text-muted" /> +91-9996663035
+              <p className="font-display text-lg leading-snug text-ink">
+                Property Legal &amp; Due Diligence Consultant
+              </p>
+              <p className="mt-1 text-[13px] leading-relaxed text-muted">
+                Real Estate Advisory | Property Chain Verification | Title Due Diligence | Property Litigation Coordination
+              </p>
+              <p className="mt-3 flex items-center gap-2.5 text-ink tabular-nums">
+                <Phone size={15} strokeWidth={1.5} className="text-muted" /> +91-9996663239
               </p>
             </div>
           </div>
